@@ -1,0 +1,79 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ary/Desktop/ece385/lab1/simulation/modelsim
+vhard_block
+Z1 !s110 1686958325
+!i10b 1
+!s100 FKf89JF_MdL]]QdX_T2UE0
+I^XZ@_]R7XF7IiOOFdDY8H2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1686955870
+Z4 8lab1.vo
+Z5 Flab1.vo
+L0 1280
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1686958325.000000
+Z8 !s107 lab1.vo|
+Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|lab1.vo|
+!i113 1
+Z10 o-vlog01compat -work work
+Z11 !s92 -vlog01compat -work work +incdir+.
+Z12 tCvgOpt 0
+vlab1
+R1
+!i10b 1
+!s100 _3k4N]:ARDjDSQZ`9hT>^0
+I>NhkQL>FcVd`3VoO^Vbk?2
+R2
+R0
+R3
+R4
+R5
+L0 31
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+vtestbench
+DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+R1
+!i10b 1
+!s100 azF<MQz65eZbC[9zJ;CeF2
+IJag4]4EaAoGG;UJYA=T4Z0
+R2
+!s105 counter_test_sv_unit
+S1
+R0
+w1686958264
+8C:/Users/ary/Desktop/ece385/lab1/counter_test.sv
+FC:/Users/ary/Desktop/ece385/lab1/counter_test.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/ary/Desktop/ece385/lab1/counter_test.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab1|C:/Users/ary/Desktop/ece385/lab1/counter_test.sv|
+!i113 1
+o-sv -work work
+!s92 -sv -work work +incdir+C:/Users/ary/Desktop/ece385/lab1
+R12

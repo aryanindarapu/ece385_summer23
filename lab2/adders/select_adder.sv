@@ -8,7 +8,7 @@ module select_adder (
     logic [3:0] tempS;
     logic C4;
 
-    // First Adder (cin is predetermined)
+    // Hardwired logic to get possibilities if cin = 0 or 1
     select_adder_4 SA0(.A(A[3:0]), .B(B[3:0]), .cin(cin), .S(tempS[3:0]), .cout(C4));
     assign S_0[3:0] = tempS[3:0];
     assign S_1[3:0] = tempS[3:0];

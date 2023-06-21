@@ -39,10 +39,10 @@ module Processor (input logic   Clk,     // Internal
 	 //Note that you can hardwire F and R here with 'assign'. What to assign them to? Check the demo points!
 	 //Remember that when you comment out the ports above, you will need to define F and R as variables
 	 //uncomment the following lines when you hardwaire F and R (This was the solution to the problem during Q/A)
-	 //logic [2:0] F;
-	 //logic [1:0] R;
-	 //assign F = something;
-	 //assign R = something;
+//	 logic [2:0] F;
+//	 logic [1:0] R;
+//	 assign F = 3'b000;
+//	 assign R = 2'b00;
 	 
 	 //Instantiation of modules here
 	 register_unit    reg_unit (

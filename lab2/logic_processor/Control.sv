@@ -30,7 +30,11 @@ module control (input  logic Clk, Reset, LoadA, LoadB, Execute,
             C :    next_state = D;
             D :    next_state = E;
             E :    next_state = F;
-            F :    if (~Execute) 
+				F :    next_state = G;
+            G :    next_state = H;
+            H :    next_state = I;
+            I :    next_state = J;
+            J :    if (~Execute) 
                        next_state = A;
 							  
         endcase

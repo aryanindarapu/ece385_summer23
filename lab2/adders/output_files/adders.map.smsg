@@ -1,1 +1,2 @@
+Info (10281): Verilog HDL Declaration information at lookahead_adder.sv(8): object "Pg0" differs only in case from object "PG0" in the same scope File: C:/ece385_summer23/lab2/adders/lookahead_adder.sv Line: 8
 Warning (10273): Verilog HDL warning at HexDriver.sv(24): extended using "x" or "z" File: C:/ece385_summer23/lab2/adders/HexDriver.sv Line: 24

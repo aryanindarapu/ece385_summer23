@@ -1,22 +1,22 @@
 module lookahead_adder_4(
 	input [3:0] A, B,
 	input cin,
-	output [3:0] S,
+	output [3:0] S
 );
 
-logic P0, P1, P2, P3, G0, G1, G2, G3;
+logic [3:0] P, G;
 logic C1, C2, C3;
-logic Pg, Gg; // NEVER USED
+logic Pg, Gg; // NEVER USED(only exists for lookahead_adder to send cin's here)
 
-lookahead_adder_pg LPG(.A(A), .B(B), .P({P3, P2, P1, P0}), .G({G3, G2, G1, G0}), .Pg(Pg), .Gg(Gg));
+lookahead_adder_pg LPG(.A(A), .B(B), .P(P), .G(G), .Pg(Pg), .Gg(Gg));
 
-assign C1 = (cin&P0) | G0;
-assign C2 = (C1&P1) | G1;
-assign C3 = (C2&P2) | G2;
+assign C1 = (cin&P[0]) | G[0];
+assign C2 = (C1&P[1]) | G[1];
+assign C3 = (C2&P[2]) | G[2];
 
-S[0] = A[0]^B[0]^cin;
-S[1] = A[1]^B[1]^C1;
-S[2] = A[2]^B[2]^C2;
-S[3] = A[3]^B[3]^C3;
+assign S[0] = A[0]^B[0]^cin;
+assign S[1] = A[1]^B[1]^C1;
+assign S[2] = A[2]^B[2]^C2;
+assign S[3] = A[3]^B[3]^C3;
  
 endmodule 

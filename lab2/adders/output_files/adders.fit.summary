@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Fitter Status : Successful - Thu Jun 22 18:20:06 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : adders
@@ -16,3 +17,23 @@ Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
 Total PLLs : 0 / 4 ( 0 % )
 UFM blocks : 0 / 1 ( 0 % )
 ADC blocks : 0 / 2 ( 0 % )
+=======
+Fitter Status : Successful - Thu Jun 22 15:06:35 2023
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : adders
+Top-level Entity Name : adder2
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 78 / 49,760 ( < 1 % )
+    Total combinational functions : 78 / 49,760 ( < 1 % )
+    Dedicated logic registers : 20 / 49,760 ( < 1 % )
+Total registers : 20
+Total pins : 65 / 360 ( 18 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )
+>>>>>>> d01a8c17fcd8d717202576a60d65e588ede19027

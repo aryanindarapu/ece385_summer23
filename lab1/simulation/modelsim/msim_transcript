@@ -12,30 +12,30 @@
 # 
 # vlog -vlog01compat -work work +incdir+. {lab1.vo}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:32:05 on Jun 16,2023
+# Start time: 01:24:21 on Jun 22,2023
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+." lab1.vo 
 # -- Compiling module lab1
 # -- Compiling module hard_block
 # 
 # Top level modules:
 # 	lab1
-# End time: 19:32:05 on Jun 16,2023, Elapsed time: 0:00:00
+# End time: 01:24:21 on Jun 22,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/ary/Desktop/ece385/lab1 {C:/Users/ary/Desktop/ece385/lab1/counter_test.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:32:05 on Jun 16,2023
+# Start time: 01:24:21 on Jun 22,2023
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/ary/Desktop/ece385/lab1" C:/Users/ary/Desktop/ece385/lab1/counter_test.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 19:32:05 on Jun 16,2023, Elapsed time: 0:00:00
+# End time: 01:24:21 on Jun 22,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps +transport_int_delays +transport_path_delays -L altera_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L gate_work -L work -voptargs="+acc"  testbench
 # vsim -t 1ps "+transport_int_delays" "+transport_path_delays" -L altera_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L gate_work -L work -voptargs=""+acc"" testbench 
-# Start time: 19:32:05 on Jun 16,2023
+# Start time: 01:24:21 on Jun 22,2023
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.lab1
@@ -60,13 +60,13 @@
 # add wave *
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: ary  Hostname: DESKTOP-M4UPS7M  ProcessID: 5652
-#           Attempting to use alternate WLF file "./wlftyvcm6m".
+#           Attempting to use alternate WLF file "./wlft9zw2ma".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftyvcm6m
+#           Using alternate file: ./wlft9zw2ma
 # view structure
 # .main_pane.structure.interior.cs.body.struct
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run 10000 ns
-# End time: 19:34:40 on Jun 16,2023, Elapsed time: 0:02:35
+# End time: 01:30:43 on Jun 22,2023, Elapsed time: 0:06:22
 # Errors: 0, Warnings: 6

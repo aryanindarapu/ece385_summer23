@@ -1,0 +1,85 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/ece385_summer23/lab2/adders/simulation/modelsim
+vadder2
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1687470779
+!i10b 1
+!s100 zdN>]JJDB@AVHY_01b=8f2
+IYQ8:B_SP7H?[Q?08:FbYn1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 adders_svo_unit
+S1
+R0
+Z5 w1687470100
+Z6 8adders.svo
+Z7 Fadders.svo
+L0 31
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1687470779.000000
+Z10 !s107 adders.svo|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+.|adders.svo|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+.
+Z14 tCvgOpt 0
+vadder_testbench
+R1
+!s110 1687470780
+!i10b 1
+!s100 ^Q]8=T@<3fom17SiW<J[W3
+IH@bcRLDGdO[o;UZ?Bm2RP2
+R3
+!s105 adder_testbench_sv_unit
+S1
+R0
+w1687469658
+8C:/ece385_summer23/lab2/adders/adder_testbench.sv
+FC:/ece385_summer23/lab2/adders/adder_testbench.sv
+L0 1
+R8
+r1
+!s85 0
+31
+!s108 1687470780.000000
+!s107 C:/ece385_summer23/lab2/adders/adder_testbench.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/adders|C:/ece385_summer23/lab2/adders/adder_testbench.sv|
+!i113 1
+R12
+!s92 -sv -work work +incdir+C:/ece385_summer23/lab2/adders
+R14
+vhard_block
+R1
+R2
+!i10b 1
+!s100 DWbG0C4naRgSO=8KJjbK`1
+IPN3HR0Z62?cjWBiZ3Zf3Z3
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 3191
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14

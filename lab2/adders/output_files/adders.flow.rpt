@@ -1,5 +1,5 @@
 Flow report for adders
-Wed Jun 21 03:15:51 2023
+Thu Jun 22 18:20:19 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Jun 21 03:15:51 2023       ;
+; Flow Status                        ; Successful - Thu Jun 22 18:20:19 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; adders                                      ;
 ; Top-level Entity Name              ; adder2                                      ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 87 / 49,760 ( < 1 % )                       ;
-;     Total combinational functions  ; 87 / 49,760 ( < 1 % )                       ;
+; Total logic elements               ; 79 / 49,760 ( < 1 % )                       ;
+;     Total combinational functions  ; 79 / 49,760 ( < 1 % )                       ;
 ;     Dedicated logic registers      ; 20 / 49,760 ( < 1 % )                       ;
 ; Total registers                    ; 20                                          ;
 ; Total pins                         ; 65 / 360 ( 18 % )                           ;
@@ -66,31 +66,38 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/21/2023 03:15:13 ;
+; Start date & time ; 06/22/2023 18:19:40 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adders              ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                            ;
-+-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
-+-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 30902522089949.168733531221612         ; --            ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --          ; --             ;
-; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; adder2      ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; adder2      ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; adder2      ; Top            ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --             ;
-; TOP_LEVEL_ENTITY                    ; adder2                                 ; adders        ; --          ; --             ;
-+-------------------------------------+----------------------------------------+---------------+-------------+----------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                              ;
++--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
+; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id      ;
++--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
+; COMPILER_SIGNATURE_ID                ; 30902522089949.168747598012404         ; --            ; --          ; --              ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; adder_testbench ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; adder_testbench                        ; --            ; --          ; eda_simulation  ;
+; EDA_OUTPUT_DATA_FORMAT               ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation  ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --          ; --              ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation  ;
+; EDA_TEST_BENCH_FILE                  ; adder_testbench.sv                     ; --            ; --          ; adder_testbench ;
+; EDA_TEST_BENCH_MODULE_NAME           ; adder_testbench                        ; --            ; --          ; adder_testbench ;
+; EDA_TEST_BENCH_NAME                  ; adder_testbench                        ; --            ; --          ; eda_simulation  ;
+; EDA_TEST_BENCH_RUN_SIM_FOR           ; 10000 ns                               ; --            ; --          ; adder_testbench ;
+; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation  ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --              ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --              ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; adder2      ; Top             ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; adder2      ; Top             ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; adder2      ; Top             ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --              ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --              ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --              ;
+; TOP_LEVEL_ENTITY                     ; adder2                                 ; adders        ; --          ; --              ;
++--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -98,12 +105,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4764 MB             ; 00:00:25                           ;
-; Fitter               ; 00:00:12     ; 1.0                     ; 5637 MB             ; 00:00:16                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4681 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.0                     ; 4827 MB             ; 00:00:04                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4644 MB             ; 00:00:01                           ;
-; Total                ; 00:00:34     ; --                      ; --                  ; 00:00:50                           ;
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4764 MB             ; 00:00:25                           ;
+; Fitter               ; 00:00:12     ; 1.0                     ; 5634 MB             ; 00:00:15                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4683 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.0                     ; 4821 MB             ; 00:00:04                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4643 MB             ; 00:00:01                           ;
+; Total                ; 00:00:35     ; --                      ; --                  ; 00:00:49                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -29,14 +29,15 @@ module select_adder (
 
     // TODO: Check that this logic works
     always_comb
-        begin
-            if (cin == 1'b0)
-                assign S = S_0;
-                assign cout = C16_0 | (C12 & C16_1);
-            else
-                assign S = S_1;
-                assign cout = C16_0 | (C12 & C16_1);
-        end
+    begin
+            if (cin == 1'b0) begin
+                S = S_0;
+                cout = C16_0 | (C12 & C16_1);
+            end else begin
+                S = S_1;
+                cout = C16_0 | (C12 & C16_1);
+				end
+    end
 
     /* TODO
      *

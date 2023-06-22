@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/ary/Desktop/ece385/lab2/logic_processor/simulation/modelsim
 vcompute
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1687320465
+Z2 !s110 1687409663
 !i10b 1
 !s100 i=]6932U1_OWO<5E?3HbR1
 IH4UO270E7Bhb2U5?h:>;S1
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1687320465.000000
+Z5 !s108 1687409663.000000
 !s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/compute.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/compute.sv|
 !i113 1
@@ -37,13 +37,13 @@ vcontrol
 R1
 R2
 !i10b 1
-!s100 PhY19d^W^9j?`bhO;cg8?0
-IGR6_QaFPn6z;5hT3Lm3Ja1
+!s100 zA>KJEaR;hifiMGk<O7m^0
+IODJ;kz:dh8ODRJXCYSH^n3
 R3
 !s105 Control_sv_unit
 S1
 R0
-w1687317633
+w1687408647
 8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Control.sv
 FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Control.sv
 L0 3
@@ -86,7 +86,7 @@ R8
 n@hex@driver
 vProcessor
 R1
-Z10 !s110 1687320466
+R2
 !i10b 1
 !s100 LOnSzB_hoHE=6UzjIE5mP2
 InTjgQ0`h?0l]8GM8e]KJ62
@@ -94,7 +94,7 @@ R3
 !s105 Processor_sv_unit
 S1
 R0
-w1687307163
+w1687405340
 8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Processor.sv
 FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Processor.sv
 L0 8
@@ -192,20 +192,20 @@ R2
 !s100 2W5Vz0:F6ckE2`eJOTK5l1
 IU0KfB:FYHPSb1kkI<BL@30
 R3
-Z11 !s105 Synchronizers_sv_unit
+Z10 !s105 Synchronizers_sv_unit
 S1
 R0
 R9
-Z12 8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv
-Z13 FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv
+Z11 8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv
+Z12 FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv
 L0 4
 R4
 r1
 !s85 0
 31
 R5
-Z14 !s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv|
-Z15 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv|
+Z13 !s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv|
+Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv|
 !i113 1
 R6
 R7
@@ -217,20 +217,20 @@ R2
 !s100 IGd9f_F;JNjVBLQ@DAnD10
 I^:aGOl;:RKicS4PV@G:1J2
 R3
-R11
+R10
 S1
 R0
 R9
+R11
 R12
-R13
 L0 18
 R4
 r1
 !s85 0
 31
 R5
+R13
 R14
-R15
 !i113 1
 R6
 R7
@@ -242,27 +242,27 @@ R2
 !s100 1CXiH1DYDbAUS69Ee2j060
 IXl87olYI00W49_NL6=M6Z1
 R3
-R11
+R10
 S1
 R0
 R9
+R11
 R12
-R13
 L0 39
 R4
 r1
 !s85 0
 31
 R5
+R13
 R14
-R15
 !i113 1
 R6
 R7
 R8
 vtestbench
 R1
-R10
+R2
 !i10b 1
 !s100 6fgeGEV<MmGbRAG8fZAbS0
 I^5RNji8BZOEW>V:]Q0oe82
@@ -278,7 +278,7 @@ R4
 r1
 !s85 0
 31
-!s108 1687320466.000000
+R5
 !s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/testbench_8.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/testbench_8.sv|
 !i113 1

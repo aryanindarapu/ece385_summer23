@@ -244,7 +244,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "R[1]",
+					"name" : "Din[7]",
 					"strict" : false
 				},
 				{
@@ -252,11 +252,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "F[2]",
+					"name" : "R[1]",
 					"strict" : false
 				},
 				{
-					"name" : "F[0]",
+					"name" : "F[2]",
 					"strict" : false
 				},
 				{
@@ -264,7 +264,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "Din[7]",
+					"name" : "F[0]",
 					"strict" : false
 				}
 			]

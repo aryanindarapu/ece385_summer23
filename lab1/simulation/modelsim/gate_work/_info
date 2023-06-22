@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dC:/Users/ary/Desktop/ece385/lab1/simulation/modelsim
 vhard_block
-Z1 !s110 1686958325
+Z1 !s110 1687411461
 !i10b 1
 !s100 FKf89JF_MdL]]QdX_T2UE0
 I^XZ@_]R7XF7IiOOFdDY8H2
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1686955870
+Z3 w1687410517
 Z4 8lab1.vo
 Z5 Flab1.vo
 L0 1280
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1686958325.000000
+Z7 !s108 1687411461.000000
 Z8 !s107 lab1.vo|
 Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|lab1.vo|
 !i113 1
@@ -56,13 +56,13 @@ vtestbench
 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
 R1
 !i10b 1
-!s100 azF<MQz65eZbC[9zJ;CeF2
-IJag4]4EaAoGG;UJYA=T4Z0
+!s100 ^Vi89:4A<I[DC@[XOXTUI1
+IacQU8?bI;7N`L_5XGOQmk3
 R2
 !s105 counter_test_sv_unit
 S1
 R0
-w1686958264
+w1687411439
 8C:/Users/ary/Desktop/ece385/lab1/counter_test.sv
 FC:/Users/ary/Desktop/ece385/lab1/counter_test.sv
 L0 1

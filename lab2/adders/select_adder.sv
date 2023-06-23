@@ -1,9 +1,50 @@
 module select_adder (
-	input  [15:0] A, B,
-	input         cin,
-	output [15:0] S,
-	output        cout
-);
+	input  logic [15:0] A, B,
+	input  logic cin,
+	output logic [15:0] S,
+	output logic cout
+);  
+    
+    logic C4;
+    select_adder_4 SA0(.A(A[3:0]), .B(B[3:0]), .cin(cin), .S(S[3:0]), .cout(C4));
+
+    logic C8, C8_0, C8_1;
+    logic [3:0] S_8_0, S_8_1;
+    select_adder_4 SA1(.A(A[7:4]), .B(B[7:4]), .cin(1'b0), .S(S_8_0), .cout(C8_0));
+    select_adder_4 SA2(.A(A[7:4]), .B(B[7:4]), .cin(1'b1), .S(S_8_1), .cout(C8_1));
+    assign C8 = C8_0 | (C4 & C8_1);
+
+    logic C12, C12_0, C12_1;
+    logic [3:0] S_12_0, S_12_1;
+    select_adder_4 SA3(.A(A[11:8]), .B(B[11:8]), .cin(1'b0), .S(S_12_0), .cout(C12_0));
+    select_adder_4 SA4(.A(A[11:8]), .B(B[11:8]), .cin(1'b1), .S(S_12_1), .cout(C12_1));
+    assign C12 = C12_0 | (C8 & C12_1);
+
+    logic C16_0, C16_1;
+    logic [3:0] S_16_0, S_16_1;
+    select_adder_4 SA5(.A(A[15:12]), .B(B[15:12]), .cin(1'b0), .S(S_16_0), .cout(C16_0));
+    select_adder_4 SA6(.A(A[15:12]), .B(B[15:12]), .cin(1'b1), .S(S_16_1), .cout(C16_1));
+    assign cout = C12_0 | (C8 & C12_1);
+
+    always_comb
+    if (C4 == 1'b0) begin
+        S[7:4] = S_8_0;
+    end else 
+        S[7:4] = S_8_1;
+
+    if (C8 == 1'b0) begin
+        S[11:8] = S_12_0;
+    end else 
+        S[11:8] = S_12_1;
+
+    if (C12 == 1'b0) begin
+        S[15:12] = S_16_0;
+    end else 
+        S[15:12] = S_16_1;
+
+    
+
+    /*
     logic [15:0] S_0, S_1;
     logic [3:0] tempS;
     logic C4;
@@ -36,8 +77,8 @@ module select_adder (
             end else begin
                 S = S_1;
                 cout = C16_0 | (C12 & C16_1);
-				end
-    end
+			end
+    end */
 
     /* TODO
      *

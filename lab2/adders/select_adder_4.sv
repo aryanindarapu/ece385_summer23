@@ -1,8 +1,8 @@
 module select_adder_4 (
-    input [3:0] A, B,
-    input cin,
-    output [3:0] S,
-    output cout
+    input logic [3:0] A, B,
+    input logic cin,
+    output logic [3:0] S,
+    output logic cout
 );
     logic cout0, cout1, cout2;
 

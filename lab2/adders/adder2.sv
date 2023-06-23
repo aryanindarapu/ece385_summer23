@@ -41,7 +41,7 @@ module adder2 ( input Clk, Reset_Clear, Run_Accumulate,
 		
 //		lookahead_adder adderla	(.A(extended_SW[15:0]), .B(Out[15:0]), .cin(1'b0), .cout(S[16]), .S(S[15:0]) );
 		
-		//select_adder adders	(.A(extended_SW[15:0]), .B(Out[15:0]), .cin(1'b0), .cout(S[16]), .S(S[15:0]) );
+//		select_adder adders	(.A(extended_SW[15:0]), .B(Out[15:0]), .cin(1'b0), .cout(S[16]), .S(S[15:0]) );
 
 
 		// Hex units that display contents of SW and register R in hex

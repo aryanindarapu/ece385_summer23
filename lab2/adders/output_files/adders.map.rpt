@@ -1,5 +1,5 @@
 Analysis & Synthesis report for adders
-Thu Jun 22 15:06:22 2023
+Thu Jun 22 20:14:30 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -47,13 +47,13 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 22 15:06:22 2023       ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 22 20:14:30 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; adders                                      ;
 ; Top-level Entity Name              ; adder2                                      ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 77                                          ;
-;     Total combinational functions  ; 77                                          ;
+; Total logic elements               ; 78                                          ;
+;     Total combinational functions  ; 78                                          ;
 ;     Dedicated logic registers      ; 20                                          ;
 ; Total registers                    ; 20                                          ;
 ; Total pins                         ; 65                                          ;
@@ -165,8 +165,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -179,9 +178,9 @@ refer to the applicable agreement for further details.
 ; ripple_adder.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/ripple_adder.sv ;         ;
 ; reg_17.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/reg_17.sv       ;         ;
 ; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/HexDriver.sv    ;         ;
+; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/full_adder.sv   ;         ;
 ; control.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/control.sv      ;         ;
 ; adder2.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/adder2.sv       ;         ;
-; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385/lab2/adders/full_adder.sv   ;         ;
 +----------------------------------+-----------------+------------------------------+---------------------------------------------------------+---------+
 
 
@@ -190,16 +189,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 77        ;
+; Estimated Total logic elements              ; 78        ;
 ;                                             ;           ;
-; Total combinational functions               ; 77        ;
+; Total combinational functions               ; 78        ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 57        ;
-;     -- 3 input functions                    ; 10        ;
-;     -- <=2 input functions                  ; 10        ;
+;     -- 3 input functions                    ; 12        ;
+;     -- <=2 input functions                  ; 9         ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 77        ;
+;     -- normal mode                          ; 78        ;
 ;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
 ; Total registers                             ; 20        ;
@@ -212,8 +211,8 @@ refer to the applicable agreement for further details.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; Clk~input ;
 ; Maximum fan-out                             ; 20        ;
-; Total fan-out                               ; 465       ;
-; Average fan-out                             ; 2.05      ;
+; Total fan-out                               ; 469       ;
+; Average fan-out                             ; 2.06      ;
 +---------------------------------------------+-----------+
 
 
@@ -222,7 +221,7 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                        ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+--------------+--------------+
-; |adder2                    ; 77 (0)              ; 20 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 65   ; 0            ; 0          ; |adder2                                    ; adder2       ; work         ;
+; |adder2                    ; 78 (0)              ; 20 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 65   ; 0            ; 0          ; |adder2                                    ; adder2       ; work         ;
 ;    |HexDriver:AHex0|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:AHex0                    ; HexDriver    ; work         ;
 ;    |HexDriver:AHex1|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:AHex1                    ; HexDriver    ; work         ;
 ;    |HexDriver:BHex0|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex0                    ; HexDriver    ; work         ;
@@ -231,14 +230,14 @@ refer to the applicable agreement for further details.
 ;    |HexDriver:BHex3|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex3                    ; HexDriver    ; work         ;
 ;    |control:run_once|      ; 3 (3)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|control:run_once                   ; control      ; work         ;
 ;    |reg_17:reg_unit|       ; 0 (0)               ; 17 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|reg_17:reg_unit                    ; reg_17       ; work         ;
-;    |ripple_adder:adder|    ; 32 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder                 ; ripple_adder ; work         ;
+;    |ripple_adder:adder|    ; 33 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder                 ; ripple_adder ; work         ;
 ;       |full_adder:FA0|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA0  ; full_adder   ; work         ;
 ;       |full_adder:FA10|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA10 ; full_adder   ; work         ;
 ;       |full_adder:FA11|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA11 ; full_adder   ; work         ;
 ;       |full_adder:FA12|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA12 ; full_adder   ; work         ;
-;       |full_adder:FA13|    ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA13 ; full_adder   ; work         ;
-;       |full_adder:FA14|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA14 ; full_adder   ; work         ;
-;       |full_adder:FA15|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA15 ; full_adder   ; work         ;
+;       |full_adder:FA13|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA13 ; full_adder   ; work         ;
+;       |full_adder:FA14|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA14 ; full_adder   ; work         ;
+;       |full_adder:FA15|    ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA15 ; full_adder   ; work         ;
 ;       |full_adder:FA1|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA1  ; full_adder   ; work         ;
 ;       |full_adder:FA2|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA2  ; full_adder   ; work         ;
 ;       |full_adder:FA3|     ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|ripple_adder:adder|full_adder:FA3  ; full_adder   ; work         ;
@@ -316,16 +315,16 @@ Encoding Type:  One-Hot
 ; cycloneiii_ff         ; 20                          ;
 ;     CLR               ; 3                           ;
 ;     ENA CLR           ; 17                          ;
-; cycloneiii_lcell_comb ; 84                          ;
-;     normal            ; 84                          ;
+; cycloneiii_lcell_comb ; 85                          ;
+;     normal            ; 85                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 10                          ;
-;         3 data inputs ; 10                          ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 12                          ;
 ;         4 data inputs ; 57                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 3.27                        ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 3.51                        ;
 +-----------------------+-----------------------------+
 
 
@@ -334,7 +333,7 @@ Encoding Type:  One-Hot
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -344,14 +343,12 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 22 15:06:09 2023
+    Info: Processing started: Thu Jun 22 20:14:19 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adders -c adders
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file select_adder_4.sv
     Info (12023): Found entity 1: select_adder_4 File: C:/Users/ary/Desktop/ece385/lab2/adders/select_adder_4.sv Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder_pg.sv
-    Info (12023): Found entity 1: lookahead_adder_pg File: C:/Users/ary/Desktop/ece385/lab2/adders/lookahead_adder_pg.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file select_adder.sv
     Info (12023): Found entity 1: select_adder File: C:/Users/ary/Desktop/ece385/lab2/adders/select_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file router.sv
@@ -360,19 +357,23 @@ Info (12021): Found 1 design units, including 1 entities, in source file ripple_
     Info (12023): Found entity 1: ripple_adder File: C:/Users/ary/Desktop/ece385/lab2/adders/ripple_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file reg_17.sv
     Info (12023): Found entity 1: reg_17 File: C:/Users/ary/Desktop/ece385/lab2/adders/reg_17.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder_pg.sv
+    Info (12023): Found entity 1: lookahead_adder_pg File: C:/Users/ary/Desktop/ece385/lab2/adders/lookahead_adder_pg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder_4.sv
+    Info (12023): Found entity 1: lookahead_adder_4 File: C:/Users/ary/Desktop/ece385/lab2/adders/lookahead_adder_4.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder.sv
     Info (12023): Found entity 1: lookahead_adder File: C:/Users/ary/Desktop/ece385/lab2/adders/lookahead_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
     Info (12023): Found entity 1: HexDriver File: C:/Users/ary/Desktop/ece385/lab2/adders/HexDriver.sv Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file control.sv
-    Info (12023): Found entity 1: control File: C:/Users/ary/Desktop/ece385/lab2/adders/control.sv Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file adder2.sv
-    Info (12023): Found entity 1: adder2 File: C:/Users/ary/Desktop/ece385/lab2/adders/adder2.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file full_adder.sv
     Info (12023): Found entity 1: full_adder File: C:/Users/ary/Desktop/ece385/lab2/adders/full_adder.sv Line: 1
-Warning (12019): Can't analyze file -- file full_adderPG.sv is missing
-Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder_4.sv
-    Info (12023): Found entity 1: lookahead_adder_4 File: C:/Users/ary/Desktop/ece385/lab2/adders/lookahead_adder_4.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file control.sv
+    Info (12023): Found entity 1: control File: C:/Users/ary/Desktop/ece385/lab2/adders/control.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file adder_testbench.sv
+    Info (12023): Found entity 1: adder_testbench File: C:/Users/ary/Desktop/ece385/lab2/adders/adder_testbench.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file adder2.sv
+    Info (12023): Found entity 1: adder2 File: C:/Users/ary/Desktop/ece385/lab2/adders/adder2.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at adder_testbench.sv(24): created implicit net for "CO" File: C:/Users/ary/Desktop/ece385/lab2/adders/adder_testbench.sv Line: 24
 Info (12127): Elaborating entity "adder2" for the top level hierarchy
 Info (12128): Elaborating entity "control" for hierarchy "control:run_once" File: C:/Users/ary/Desktop/ece385/lab2/adders/adder2.sv Line: 30
 Info (12128): Elaborating entity "router" for hierarchy "router:route" File: C:/Users/ary/Desktop/ece385/lab2/adders/adder2.sv Line: 33
@@ -393,15 +394,15 @@ Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/ary/Desktop/ece385/lab2/adders/output_files/adders.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 142 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 143 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 77 logic cells
+    Info (21061): Implemented 78 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 4781 megabytes
-    Info: Processing ended: Thu Jun 22 15:06:22 2023
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:27
+    Info: Peak virtual memory: 4772 megabytes
+    Info: Processing ended: Thu Jun 22 20:14:30 2023
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:23
 
 
 +------------------------------------------+

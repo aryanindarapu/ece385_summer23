@@ -1,5 +1,5 @@
 module control(
-	input logic Reset, Clk, Run, ClearA_LoadB, M, X,
+	input logic Reset, Clk, Run, ClearA_LoadB, M,
 	output logic Clr_Ld, Shift, Add, Sub
 );
 

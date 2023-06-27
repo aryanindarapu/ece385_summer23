@@ -10,27 +10,28 @@ module multiplier(
 );
 
 //define logics which are also our registers
-logic X, M;
+logic X, M; // TODO: X starts at 0
 logic [7:0] A, B;
 logic [8:0] XA;
+
+initial begin
+	XA = 9'b000000000;
+end
+
 assign M = B[0];
 
-//assign XA as a X concatenated with A
-assign XA[8] = X;
-assign XA[7:0] = A;
+// assign XA[8] = X;
+// assign XA[7:0] = A;
+
 
 //logics I'm not sure if ill need to use
 logic Clr_Ld, Shift, Add, Sub;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-control ctrl(.Reset(Reset_Load_Clear), .Clk(Clk), .Run(Run), .ClearA_LoadB(Reset_Load_Clear), .M(M), .X(X), .Clr_Ld(Clr_Ld), .Shift(Shift), .Add(Add), .Sub(Sub));
+control ctrl(.Reset(Reset_Load_Clear), .Clk(Clk), .Run(Run), .ClearA_LoadB(Reset_Load_Clear), .M(M), .Clr_Ld(Clr_Ld), .Shift(Shift), .Add(Add), .Sub(Sub));
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-adder_9 add_sub(.XA(XA), .S(SW), .OUT(A));
+// adder_9 add_sub(.XA(XA), .S(SW), .OUT(XA));
 ///////////////////////////////NOTE THAT OUTPUT FROM THE 9-BIT ADDER(WHICH IS THE LEAST SIGNIFICANT 8-BITS) GOES INTO A//////////////////////////////////////////////////
-initial begin
-	X = SW[7];
-end
-
 
 always_comb begin
 	if (Shift == 1'b1) begin
@@ -51,10 +52,12 @@ always_comb begin
 		XA[5] = XA[6];
 		XA[6] = XA[7];
 		XA[7] = XA[8];
-		XA[8] = temp;
+		// XA[8] = XA[7];
 	end else if (Add == 1'b1) begin
-		
+		adder_9 quick_add(.XA(XA), .S(SW), .OUT(XA));
+		// XA[8] = XA[7];
 	end
+	 // TODO: Add the subtractor
 
 end
 

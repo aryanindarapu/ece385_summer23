@@ -5,5 +5,7 @@ module multiplier (
     output logic [7:0] Aval, Bval,
     output logic Xval 
 )
+// If Reset_Load_Clear is 1, then load switches (SW) into register B and clear registers X and A
+
 
 endmodule

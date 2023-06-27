@@ -33,5 +33,30 @@ control ctrl(.Reset(Reset_Load_Clear), .Clk(Clk), .Run(Run), .ClearA_LoadB(Reset
 adder_9 add_sub(.XA(XA), .S(S), .OUT(A));
 ///////////////////////////////NOTE THAT OUTPUT FROM THE 9-BIT ADDER(WHICH IS THE LEAST SIGNIFICANT 8-BITS) GOES INTO A//////////////////////////////////////////////////
 
+always_comb begin
+	if (Shift == 1'b1) begin
+		logic temp = B[0];
+		B[0] = B[1];
+		B[1] = B[2];
+		B[2] = B[3];
+		B[3] = B[4];
+		B[4] = B[5];
+		B[5] = B[6];
+		B[6] = B[7]; 
+		B[7] = XA[0];
+		XA[0] = XA[1];
+		XA[1] = XA[2];
+		XA[2] = XA[3];
+		XA[3] = XA[4];
+		XA[4] = XA[5];
+		XA[5] = XA[6];
+		XA[6] = XA[7];
+		XA[7] = XA[8];
+		XA[8] = temp;
+	end else if (Add == 1'b1) begin
+		
+	end
+
+end
 
 endmodule 

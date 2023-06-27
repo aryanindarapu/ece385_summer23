@@ -32,6 +32,8 @@ control ctrl(.Reset(Reset_Load_Clear), .Clk(Clk), .Run(Run), .ClearA_LoadB(Reset
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // adder_9 add_sub(.XA(XA), .S(SW), .OUT(XA));
 ///////////////////////////////NOTE THAT OUTPUT FROM THE 9-BIT ADDER(WHICH IS THE LEAST SIGNIFICANT 8-BITS) GOES INTO A//////////////////////////////////////////////////
+adder_9 quick_add(.XA(XA), .S(SW), .OUT(new_XA));
+logic new_XA[8:0];
 
 always_comb begin
 	if (Shift == 1'b1) begin
@@ -54,7 +56,7 @@ always_comb begin
 		XA[7] = XA[8];
 		// XA[8] = XA[7];
 	end else if (Add == 1'b1) begin
-		adder_9 quick_add(.XA(XA), .S(SW), .OUT(XA));
+		XA = new_XA;
 		// XA[8] = XA[7];
 	end
 	 // TODO: Add the subtractor

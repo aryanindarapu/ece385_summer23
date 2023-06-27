@@ -21,7 +21,7 @@ module control (input  logic Clk, Reset, LoadA, LoadB, Execute,
 	always_comb
     begin
         
-		  next_state  = curr_state;	//required because I haven't enumerated all possibilities below
+		next_state  = curr_state;	//required because I haven't enumerated all possibilities below
         unique case (curr_state) 
 
             A :    if (Execute)
@@ -30,7 +30,7 @@ module control (input  logic Clk, Reset, LoadA, LoadB, Execute,
             C :    next_state = D;
             D :    next_state = E;
             E :    next_state = F;
-				F :    next_state = G;
+			F :    next_state = G;
             G :    next_state = H;
             H :    next_state = I;
             I :    next_state = J;

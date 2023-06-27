@@ -2,9 +2,9 @@ module multiplier(
 	input logic [7:0] SW,
 	input logic Reset_Load_Clear, Run, Clk,
 	output logic [6:0] HEX0, 
-							 HEX1, 
-							 HEX2, 
-							 HEX3,
+                       HEX1, 
+                       HEX2, 
+                       HEX3,
 	output logic [7:0] Aval, Bval,
 	output logic Xval
 );

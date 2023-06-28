@@ -1,15 +1,15 @@
 module control(
-	input logic Reset, Clk, Run, ClearA_LoadB, M,
-	output logic [1:0] out_state
+	input logic Reset_Load_Clear, Clk, Run, M,
+	output logic [2:0] out_state
 );
 
-	enum logic [4:0] { RESET, A, B, C, D, E, F, G, H, LAST, ADD, SUB }  prev_next_state, curr_state, next_state; //if counter = 3b'111 we need to check if M is 1 because this means we need to subtract
+	enum logic [3:0] { START, A, B, C, D, E, F, G, H, RESET, LOAD, ADD, SUB }  prev_next_state, curr_state, next_state; //if counter = 3b'111 we need to check if M is 1 because this means we need to subtract
 
 	//updates flip flop, current state is the only one
     always_ff @ (posedge Clk)  
     begin
-        if (Reset)
-            curr_state <= RESET;
+        if (Reset_Load_Clear)
+            curr_state <= LOAD;
 		else 
 			curr_state <= next_state;
     end
@@ -20,7 +20,8 @@ module control(
         
 		next_state = curr_state; // these will be equal values until further logic
         unique case (curr_state) 
-            RESET :  if (Run) next_state = A;
+			START:
+				if (Run) next_state = A;
 			A :
 				if (M == 1'b1) begin
 					next_state = ADD;
@@ -73,59 +74,34 @@ module control(
             H :    
 				if (M == 1'b1) begin
 					next_state = SUB;
-					prev_next_state = LAST;
+					prev_next_state = RESET; // LAST;
 				end else begin
-					next_state = LAST;
+					next_state = RESET; // LAST;
 				end
-			LAST: if (~Execute) 
-                       next_state = A;
+			// LAST: 
+			// 	if (~Run) next_state = RESET;
+			RESET:
+				next_state = START;
+			LOAD:
+				next_state = START;
 			ADD:
-				// do add operation
 				next_state = prev_next_state;
-
 			SUB:
-				// do sub operation
 				next_state = prev_next_state;
 							  
         endcase
    
-		  // Assign outputs based on ‘state’
         case (curr_state) 
-	   	   RESET: 
-				begin
-					Clr_Ld = 1'b1;
-					Shift = 1'b0;
-					Add = 1'b0;
-					Sub = 1'b0;
-				end
-	   	   LAST: 
-				begin
-					Clr_Ld = 1'b0;
-					Shift = 1'b0;
-					Add = 1'b0;
-					Sub = 1'b0;
-				end
+			LOAD: 
+				out_state = 3'b000;
+			RESET: 
+				out_state = 3'b100; // only reset XA
 			ADD:
-				begin
-					Clr_Ld = 1'b0;
-					Shift = 1'b0;
-					Add = 1'b1;
-					Sub = 1'b0;
-				end
+				out_state = 3'b010;
 			SUB:
-				begin
-					Clr_Ld = 1'b0;
-					Shift = 1'b0;
-					Add = 1'b0;
-					Sub = 1'b1;
-				end
-	   	   default:  //default case, can also have default assignments for Ld_A and Ld_B before case
-		      begin 
-                Clr_Ld = 1'b0;
-				Shift = 1'b1;
-				Add = 1'b0;
-				Sub = 1'b0;
-		      end
+				out_state = 3'b011;
+	   	   default:
+		    	out_state = 3'b001; // shift by default
         endcase
     end
 

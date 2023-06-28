@@ -1,6 +1,6 @@
 module adder_9 (
-	input logic [8:0] XA,
-	input logic [7:0] SW,
+	input  logic [8:0] XA,
+	input  logic [7:0] SW,
 	output logic [8:0] new_XA
 );
 

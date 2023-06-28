@@ -1,5 +1,5 @@
 module control(
-	input logic Reset_Load_Clear, Clk, Run, M,
+	input  logic Reset_Load_Clear, Clk, Run, M,
 	output logic [2:0] out_state
 );
 
@@ -9,7 +9,7 @@ module control(
     begin
         if (Reset_Load_Clear) begin
             curr_state <= LOAD;
-				prev_next_state <= A;
+			prev_next_state <= START;
 		end else begin
 			curr_state <= next_state;
 			prev_next_state <= temp;
@@ -25,123 +25,116 @@ module control(
 //		prev_next_state = prev_next_state; //if we don't go to add or subtract we need to remember what our last count value was
 //		out_state = out_state;
         unique case (curr_state) 
-			START: begin
-				if (Run) begin
+		START: begin
+			if (Run) begin
 				next_state = A;
-				end
-				else begin
+			end
+			else begin
 				next_state = START;
-				end
 			end
-			A : begin
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = B;
-				end else begin
-					next_state = SHIFT;
-					temp = B;
-				end
+		end
+		A : begin
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = B;
+			end else begin
+				next_state = SHIFT;
+				temp = B;
 			end
+		end
          B : begin  
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = C;
-				end else begin
-					next_state = SHIFT;
-					temp = C;
-				end
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = C;
+			end else begin
+				next_state = SHIFT;
+				temp = C;
 			end
+		end
          C : begin
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = D;
-				end else begin
-					next_state = SHIFT;
-					temp = D;
-				end
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = D;
+			end else begin
+				next_state = SHIFT;
+				temp = D;
 			end
+		end
          D : begin   
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = E;
-				end else begin
-					next_state = SHIFT;
-					temp = E;
-				end
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = E;
+			end else begin
+				next_state = SHIFT;
+				temp = E;
 			end
-         E : begin   
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = F;
-				end else begin
-					next_state = SHIFT;
-					temp = F;
-				end
+		end
+		E : begin   
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = F;
+			end else begin
+				next_state = SHIFT;
+				temp = F;
 			end
-			F : begin
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = G;
-				end else begin
-					next_state = SHIFT;
-					temp = G;
-				end
+		end
+		F : begin
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = G;
+			end else begin
+				next_state = SHIFT;
+				temp = G;
 			end
-         G : begin   
-				if (M == 1'b1) begin
-					next_state = ADD;
-					temp = H;
-				end else begin
-					next_state = SHIFT;
-					temp = H;
-				end
+		end
+		G : begin   
+			if (M == 1'b1) begin
+				next_state = ADD;
+				temp = H;
+			end else begin
+				next_state = SHIFT;
+				temp = H;
 			end
-         H : begin    
-				if (M == 1'b1) begin
-					next_state = SUB;
-					temp = RESET; // LAST;
-				end else begin
-					next_state = SHIFT; // LAST;
-					temp = RESET;
-				end
+		end
+		H : begin    
+			if (M == 1'b1) begin
+				next_state = SUB;
+				temp = RESET; // LAST;
+			end else begin
+				next_state = SHIFT; // LAST;
+				temp = RESET;
 			end
+		end
 			// LAST: 
 			// 	if (~Run) next_state = RESET;
-			RESET: begin
-				if (~Run) begin //Reset is the halting state as well
-					next_state = START;
-				end
-			end
-			LOAD: begin
+		RESET: begin
+			if (~Run) begin //Reset is the halting state as well
 				next_state = START;
 			end
-			ADD: begin
-				next_state = SHIFT;
-			end
-			SUB: begin
-				next_state = SHIFT;
-			end
-			SHIFT: begin
-				next_state = prev_next_state;
-			end
+		end
+		LOAD: begin
+			next_state = START;
+		end
+		ADD: begin
+			next_state = SHIFT;
+		end
+		SUB: begin
+			next_state = SHIFT;
+		end
+		SHIFT: begin
+			next_state = prev_next_state;
+		end
 							  
         endcase
    
         case (curr_state) 
-			LOAD: 
-				out_state = 3'b000;
-			RESET: 
-				out_state = 3'b100; // only reset XA
-			ADD:
-				out_state = 3'b010;
-			SUB:
-				out_state = 3'b011;
-			START:
-				out_state = 3'b001; //halt in start
-			SHIFT:
-				out_state = 3'b101; //actually do a shift
-	   	default:
-		    	out_state = 3'b001; // hold a count
+			LOAD:    out_state = 3'b000;
+			RESET:   out_state = 3'b100; // only reset XA
+			ADD:     out_state = 3'b010;
+			SUB:     out_state = 3'b011;
+			START:   out_state = 3'b001; // halt in start
+			SHIFT:   out_state = 3'b101; // actually do a shift
+	   		default: out_state = 3'b001; // hold a count
         endcase
     end
 

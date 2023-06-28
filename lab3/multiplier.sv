@@ -1,6 +1,6 @@
 module multiplier(
-	input logic [7:0] SW,
-	input logic Reset_Load_Clear, Run, Clk,
+	input  logic [7:0] SW,
+	input  logic Reset_Load_Clear, Run, Clk,
 	output logic [6:0] HEX0, 
                        HEX1, 
                        HEX2, 
@@ -9,12 +9,11 @@ module multiplier(
 	output logic Xval
 );
 
-//define logics which are also our registers
 logic M;
 logic [7:0] B;
 logic [8:0] XA;
 logic [15:0] full_output;
-logic notRun, notReset_Load_Clear;
+logic notRun, notReset_Load_Clear; // TODO: these values still need to be set properly
 assign M = B[0];
 
 /* Current Multiplier State Outputs 
@@ -24,15 +23,17 @@ assign M = B[0];
  * Add = 3'b010;
  * Sub = 3'b011;
  * Reset = 3'b100;
+ * Hold = 3'b101;
 */
 
-logic [8:0] new_XA_add, new_XA_sub;
+logic [8:0] new_XA_add, new_XA_sub, new_XA_shift;
+logic [7:0] new_B_shift;
 logic [2:0] curr_state;
 
 control ctrl(.Reset_Load_Clear(notReset_Load_Clear), .Clk(Clk), .Run(notRun), .M(M), .out_state(curr_state));
-// .Clr_Ld(Clr_Ld), .Shift(Shift), .Add(Add), .Sub(Sub));
 adder_9 add(.XA(XA), .SW(SW), .new_XA(new_XA_add));
 subtracter_9 sub(.XA(XA), .SW(SW), .new_XA(new_XA_sub));
+shifter shift(.XA(XA), .B(B), .new_XA(new_XA_shift), .new_B(new_B_shift));
 
 always_comb begin //These are active low, not high, TODO
 	notRun = ~Run;
@@ -42,39 +43,28 @@ end
 always_ff @ (posedge Clk) begin
 	//add a default values for all the values I'm chaing in the always_comb
 	case (curr_state)
-		3'b000 : begin
+		3'b000 : begin // State "Clear Load"
 			XA <= 9'b000000000;
 			B <= SW;
 		end
-		3'b001 :;
-		3'b010 :  begin XA <= new_XA_add; end
-		
-		3'b011 : begin XA <= new_XA_sub; end
 
-		3'b100 : begin
-			full_output[15:8] <= XA[7:0]; //set to save the part of A
-			full_output[7:0] <= B;
-//			XA <= 9'b000000000;
-			end
-		3'b101 : begin
-			B[0] <= B[1];
-			B[1] <= B[2];
-			B[2] <= B[3];
-			B[3] <= B[4];
-			B[4] <= B[5];
-			B[5] <= B[6];
-			B[6] <= B[7]; 
-			B[7] <= XA[0];
-			XA[0] <= XA[1];
-			XA[1] <= XA[2];
-			XA[2] <= XA[3];
-			XA[3] <= XA[4];
-			XA[4] <= XA[5];
-			XA[5] <= XA[6];
-			XA[6] <= XA[7];
-			XA[7] <= XA[8];
-			end
-		default:;
+		3'b001 : begin // State "Shift"
+			XA <= new_XA_shift;
+			B <= new_B_shift;
+		end  
+
+		3'b010 : begin XA <= new_XA_add; end // State "Add"
+
+		3'b011 : begin XA <= new_XA_sub; end // State "Sub"
+
+		3'b100 : begin // State "Reset"
+			full_output[15:8] <= XA[7:0]; // set to save the part of A
+			full_output[7:0] <= B; // TODO: do we not need to clear the XA register here?
+		end
+
+		3'b101 : begin // State "Hold"
+			
+		end
 	endcase
 end
 

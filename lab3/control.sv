@@ -1,6 +1,6 @@
 module control(
 	input logic Reset, Clk, Run, ClearA_LoadB, M,
-	output logic Clr_Ld, Shift, Add, Sub
+	output logic [1:0] out_state
 );
 
 	enum logic [4:0] { RESET, A, B, C, D, E, F, G, H, LAST, ADD, SUB }  prev_next_state, curr_state, next_state; //if counter = 3b'111 we need to check if M is 1 because this means we need to subtract

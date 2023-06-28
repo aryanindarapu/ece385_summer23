@@ -71,7 +71,30 @@ always_comb begin
 			full_output = { XA[7:0], B }; // display to hex drivers
 			XA = 9'b000000000;
 	endcase
-
 end
+
+assign Aval = XA[7:0];
+assign Bval = B;
+assign Xval = XA[8];
+
+HexDriver AHex0 (
+	.In0(full_output[3:0]),
+	.Out0(HEX0)
+);
+								
+HexDriver AHex1 (
+	.In0(full_output[7:4]),
+	.Out0(HEX1) 
+);
+						
+HexDriver BHex0 (
+	.In0(full_output[11:8]),
+	.Out0(HEX2)
+);
+						
+HexDriver BHex1 (
+	.In0(full_output[15:12]),
+	.Out0(HEX3)
+);
 
 endmodule 

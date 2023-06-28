@@ -77,7 +77,7 @@ module control(
 				end else begin
 					next_state = LAST;
 				end
-			LAST: if (~Execute) 
+			LAST: if (~Execute)    //??? execute doesn't exist in this file
                        next_state = A;
 			ADD:
 				// do add operation
@@ -109,7 +109,7 @@ module control(
 				begin
 					Clr_Ld = 1'b0;
 					Shift = 1'b0;
-					Add = 1'b1;
+					Add = 1'b1; //control bit that sends to adder
 					Sub = 1'b0;
 				end
 			SUB:
@@ -117,12 +117,12 @@ module control(
 					Clr_Ld = 1'b0;
 					Shift = 1'b0;
 					Add = 1'b0;
-					Sub = 1'b1;
+					Sub = 1'b1; //control bit that sends to adder
 				end
 	   	   default:  //default case, can also have default assignments for Ld_A and Ld_B before case
 		      begin 
                 Clr_Ld = 1'b0;
-				Shift = 1'b1;
+				Shift = 1'b1; //control bit for shifting since all other states (A, B, C, D, E, F, G, H) are shifting states
 				Add = 1'b0;
 				Sub = 1'b0;
 		      end

@@ -132,7 +132,7 @@ module control(
 			RESET:   out_state = 3'b100; // only reset XA
 			ADD:     out_state = 3'b010;
 			SUB:     out_state = 3'b011;
-			START:   out_state = 3'110; // halt in start
+			START:   out_state = 3'b110; // halt in start
 			SHIFT:   out_state = 3'b101; // actually do a shift
 	   		default: out_state = 3'b001; // hold a count
         endcase

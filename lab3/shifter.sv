@@ -1,5 +1,6 @@
 module shifter (
-	input  logic [7:0] XA, B,
+	input  logic [8:0] XA, 
+	input logic [7:0] B,
 	output logic [8:0] new_XA, 
 	output logic [7:0] new_B
 );

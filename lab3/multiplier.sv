@@ -48,10 +48,7 @@ always_ff @ (posedge Clk) begin
 			B <= SW;
 		end
 
-		3'b001 : begin // State "Shift"
-			XA <= new_XA_shift;
-			B <= new_B_shift;
-		end  
+		3'b001 :; // State "HALT"
 
 		3'b010 : begin XA <= new_XA_add; end // State "Add"
 
@@ -60,10 +57,12 @@ always_ff @ (posedge Clk) begin
 		3'b100 : begin // State "Reset"
 			full_output[15:8] <= XA[7:0]; // set to save the part of A
 			full_output[7:0] <= B; // TODO: do we not need to clear the XA register here?
+			XA = 9'b000000000;
 		end
 
-		3'b101 : begin // State "Hold"
-			
+		3'b101 :begin  // State "SHIFT" 
+					XA <= new_XA_shift;
+					B <= new_B_shift;
 		end
 	endcase
 end

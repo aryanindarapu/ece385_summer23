@@ -24,6 +24,7 @@ assign M = B[0];
  * Sub = 3'b011;
  * Reset = 3'b100;
  * Shift = 3'b101;
+ * Start = 3'b110;
 */
 
 logic [8:0] new_XA_add, new_XA_sub, new_XA_shift;
@@ -60,9 +61,13 @@ always_ff @ (posedge Clk) begin
 			XA = 9'b000000000;
 		end
 
-		3'b101 :begin  // State "SHIFT" 
-					XA <= new_XA_shift;
-					B <= new_B_shift;
+		3'b101 : begin  // State "SHIFT" 
+			XA <= new_XA_shift;
+			B <= new_B_shift;
+		end
+
+		3'b110 : begin // State "Start"
+			XA <= 9'b000000000;
 		end
 	endcase
 end

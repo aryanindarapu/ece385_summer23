@@ -19,11 +19,11 @@ assign M = B[0];
 /* Current Multiplier State Outputs 
  *
  * Clr_Ld = 3'b000;
- * Shift = 3'b001;
+ * Hold = 3'b001;
  * Add = 3'b010;
  * Sub = 3'b011;
  * Reset = 3'b100;
- * Hold = 3'b101;
+ * Shift = 3'b101;
 */
 
 logic [8:0] new_XA_add, new_XA_sub, new_XA_shift;

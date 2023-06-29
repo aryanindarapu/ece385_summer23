@@ -7,281 +7,281 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/ary/Desktop/ece385/lab2/logic_processor/simulation/modelsim
+Z0 dC:/ece385_summer23/lab2/logic_processor/simulation/modelsim
 vcompute
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1687409663
+Z2 !s110 1687834672
 !i10b 1
 !s100 i=]6932U1_OWO<5E?3HbR1
-IH4UO270E7Bhb2U5?h:>;S1
+IDgcUY<PDTU=DR7F[4Pk010
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 !s105 compute_sv_unit
 S1
 R0
-w1687215565
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/compute.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/compute.sv
+Z4 w1687479604
+8C:/ece385_summer23/lab2/logic_processor/compute.sv
+FC:/ece385_summer23/lab2/logic_processor/compute.sv
 L0 1
-Z4 OV;L;10.5b;63
+Z5 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1687409663.000000
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/compute.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/compute.sv|
+Z6 !s108 1687834672.000000
+!s107 C:/ece385_summer23/lab2/logic_processor/compute.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/compute.sv|
 !i113 1
-Z6 o-sv -work work
-Z7 !s92 -sv -work work +incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor
-Z8 tCvgOpt 0
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+C:/ece385_summer23/lab2/logic_processor
+Z9 tCvgOpt 0
 vcontrol
 R1
 R2
 !i10b 1
 !s100 zA>KJEaR;hifiMGk<O7m^0
-IODJ;kz:dh8ODRJXCYSH^n3
+IH[1FTgzSN0OHYH1XN;Lj53
 R3
 !s105 Control_sv_unit
 S1
 R0
-w1687408647
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Control.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Control.sv
-L0 3
 R4
+8C:/ece385_summer23/lab2/logic_processor/Control.sv
+FC:/ece385_summer23/lab2/logic_processor/Control.sv
+L0 3
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Control.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Control.sv|
-!i113 1
 R6
+!s107 C:/ece385_summer23/lab2/logic_processor/Control.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/Control.sv|
+!i113 1
 R7
 R8
+R9
 vHexDriver
 R1
 R2
 !i10b 1
 !s100 ^DddjRd7Wla]U<SlP;mT@0
-Id1WTGE[F?SmiVm>k6Q@YO2
+IFalgLUH^HgBRoX5k<K;RA2
 R3
 !s105 HexDriver_sv_unit
 S1
 R0
-Z9 w1687215566
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/HexDriver.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/HexDriver.sv
-L0 1
 R4
+8C:/ece385_summer23/lab2/logic_processor/HexDriver.sv
+FC:/ece385_summer23/lab2/logic_processor/HexDriver.sv
+L0 1
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/HexDriver.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/HexDriver.sv|
-!i113 1
 R6
+!s107 C:/ece385_summer23/lab2/logic_processor/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/HexDriver.sv|
+!i113 1
 R7
 R8
+R9
 n@hex@driver
 vProcessor
 R1
-R2
+Z10 !s110 1687834673
 !i10b 1
-!s100 LOnSzB_hoHE=6UzjIE5mP2
-InTjgQ0`h?0l]8GM8e]KJ62
+!s100 A]lQKF]Hi70a83RmMngmj3
+I7Tc24KE?eRI6`]j0K9^Xb2
 R3
 !s105 Processor_sv_unit
 S1
 R0
-w1687405340
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Processor.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Processor.sv
+w1687558280
+8C:/ece385_summer23/lab2/logic_processor/Processor.sv
+FC:/ece385_summer23/lab2/logic_processor/Processor.sv
 L0 8
-R4
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Processor.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Processor.sv|
+Z11 !s108 1687834673.000000
+!s107 C:/ece385_summer23/lab2/logic_processor/Processor.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/Processor.sv|
 !i113 1
-R6
 R7
 R8
+R9
 n@processor
 vreg_8
 R1
-R2
+Z12 !s110 1687834671
 !i10b 1
 !s100 AXDzj?_?eZ4hKcKof@=bm2
-ID1TiH><67kVDoc6GVbiXa3
+IILiRL^Lg1CTihD_1XLd053
 R3
 !s105 Reg_8_sv_unit
 S1
 R0
-w1687317788
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Reg_8.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Reg_8.sv
-L0 1
 R4
+8C:/ece385_summer23/lab2/logic_processor/Reg_8.sv
+FC:/ece385_summer23/lab2/logic_processor/Reg_8.sv
+L0 1
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Reg_8.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Reg_8.sv|
+Z13 !s108 1687834671.000000
+!s107 C:/ece385_summer23/lab2/logic_processor/Reg_8.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/Reg_8.sv|
 !i113 1
-R6
 R7
 R8
+R9
 vregister_unit
 R1
 R2
 !i10b 1
 !s100 2ffML3jhY4aCKKX2f;m:<1
-IB3f>?6az=W_Cib3j2lc<<2
+I9VBd7TF]eEgjlF_YIP^cQ0
 R3
 !s105 Register_unit_sv_unit
 S1
 R0
-w1687306694
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Register_unit.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Register_unit.sv
-L0 1
 R4
+8C:/ece385_summer23/lab2/logic_processor/Register_unit.sv
+FC:/ece385_summer23/lab2/logic_processor/Register_unit.sv
+L0 1
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Register_unit.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Register_unit.sv|
-!i113 1
 R6
+!s107 C:/ece385_summer23/lab2/logic_processor/Register_unit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/Register_unit.sv|
+!i113 1
 R7
 R8
+R9
 vrouter
 R1
-R2
+R12
 !i10b 1
 !s100 lIdD9@`9>^lYia[Dkg2aV0
-IP]]ImMcalfgl=jdPb7P<21
+I;1Q@R>5mL?YZ_LznBU6AQ1
 R3
 !s105 Router_sv_unit
 S1
 R0
-R9
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Router.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Router.sv
-L0 1
 R4
+8C:/ece385_summer23/lab2/logic_processor/Router.sv
+FC:/ece385_summer23/lab2/logic_processor/Router.sv
+L0 1
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Router.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Router.sv|
+R13
+!s107 C:/ece385_summer23/lab2/logic_processor/Router.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/Router.sv|
 !i113 1
-R6
 R7
 R8
+R9
 vsync
 R1
-R2
+R12
 !i10b 1
 !s100 2W5Vz0:F6ckE2`eJOTK5l1
-IU0KfB:FYHPSb1kkI<BL@30
+I_AmAO22dlNGg;Ma0^U5gj3
 R3
-Z10 !s105 Synchronizers_sv_unit
+Z14 !s105 Synchronizers_sv_unit
 S1
 R0
-R9
-Z11 8C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv
-Z12 FC:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv
-L0 4
 R4
+Z15 8C:/ece385_summer23/lab2/logic_processor/Synchronizers.sv
+Z16 FC:/ece385_summer23/lab2/logic_processor/Synchronizers.sv
+L0 4
+R5
 r1
 !s85 0
 31
-R5
-Z13 !s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv|
-Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/Synchronizers.sv|
+R13
+Z17 !s107 C:/ece385_summer23/lab2/logic_processor/Synchronizers.sv|
+Z18 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/Synchronizers.sv|
 !i113 1
-R6
 R7
 R8
+R9
 vsync_r0
 R1
-R2
+R12
 !i10b 1
 !s100 IGd9f_F;JNjVBLQ@DAnD10
-I^:aGOl;:RKicS4PV@G:1J2
+IfOTzlbWAb^fT2MN3n8XCQ3
 R3
-R10
+R14
 S1
 R0
-R9
-R11
-R12
-L0 18
 R4
+R15
+R16
+L0 18
+R5
 r1
 !s85 0
 31
-R5
 R13
-R14
+R17
+R18
 !i113 1
-R6
 R7
 R8
+R9
 vsync_r1
 R1
-R2
+R12
 !i10b 1
 !s100 1CXiH1DYDbAUS69Ee2j060
-IXl87olYI00W49_NL6=M6Z1
+IT27SDRlIkL=<<S8Y2hjj;1
 R3
-R10
+R14
 S1
 R0
-R9
-R11
-R12
-L0 39
 R4
+R15
+R16
+L0 39
+R5
 r1
 !s85 0
 31
-R5
 R13
-R14
+R17
+R18
 !i113 1
-R6
 R7
 R8
+R9
 vtestbench
 R1
-R2
+R10
 !i10b 1
 !s100 6fgeGEV<MmGbRAG8fZAbS0
-I^5RNji8BZOEW>V:]Q0oe82
+I>d7?cW?hS;8`6zQJdE@7L0
 R3
 !s105 testbench_8_sv_unit
 S1
 R0
-R9
-8C:/Users/ary/Desktop/ece385/lab2/logic_processor/testbench_8.sv
-FC:/Users/ary/Desktop/ece385/lab2/logic_processor/testbench_8.sv
+w1687561501
+8C:/ece385_summer23/lab2/logic_processor/testbench_8.sv
+FC:/ece385_summer23/lab2/logic_processor/testbench_8.sv
 L0 1
-R4
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:/Users/ary/Desktop/ece385/lab2/logic_processor/testbench_8.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ary/Desktop/ece385/lab2/logic_processor|C:/Users/ary/Desktop/ece385/lab2/logic_processor/testbench_8.sv|
+R11
+!s107 C:/ece385_summer23/lab2/logic_processor/testbench_8.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385_summer23/lab2/logic_processor|C:/ece385_summer23/lab2/logic_processor/testbench_8.sv|
 !i113 1
-R6
 R7
 R8
+R9

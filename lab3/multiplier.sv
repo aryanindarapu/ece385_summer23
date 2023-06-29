@@ -47,6 +47,7 @@ always_ff @ (posedge Clk) begin
 		3'b000 : begin // State "Clear Load"
 			XA <= 9'b000000000;
 			B <= SW;
+			full_output = 16'b0000000000000000;
 		end
 
 		3'b001 :; // State "HALT"

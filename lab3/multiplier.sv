@@ -72,7 +72,7 @@ always_ff @ (posedge Clk) begin
 	endcase
 end
 
-assign Aval = XA[7:0];
+assign Aval = full_output[15:8];
 assign Bval = B;
 assign Xval = XA[8];
 

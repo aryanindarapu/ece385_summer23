@@ -1,5 +1,5 @@
 Analysis & Synthesis report for adders
-Fri Jun 23 18:22:23 2023
+Thu Jun 29 19:17:24 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -16,19 +16,14 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   8. State Machine - |adder2|control:run_once|curr_state
   9. Registers Removed During Synthesis
  10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Port Connectivity Checks: "select_adder:adders|select_adder_4:SA6"
- 13. Port Connectivity Checks: "select_adder:adders|select_adder_4:SA5"
- 14. Port Connectivity Checks: "select_adder:adders|select_adder_4:SA4"
- 15. Port Connectivity Checks: "select_adder:adders|select_adder_4:SA3"
- 16. Port Connectivity Checks: "select_adder:adders|select_adder_4:SA2"
- 17. Port Connectivity Checks: "select_adder:adders|select_adder_4:SA1"
- 18. Port Connectivity Checks: "select_adder:adders"
- 19. Port Connectivity Checks: "router:route"
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
- 23. Analysis & Synthesis Suppressed Messages
+ 11. Port Connectivity Checks: "lookahead_adder:adderla|lookahead_adder_4:LA0|lookahead_adder_pg:LPG"
+ 12. Port Connectivity Checks: "lookahead_adder:adderla|lookahead_adder_pg:PG0"
+ 13. Port Connectivity Checks: "lookahead_adder:adderla"
+ 14. Port Connectivity Checks: "router:route"
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -54,13 +49,13 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 23 18:22:23 2023       ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 29 19:17:24 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; adders                                      ;
 ; Top-level Entity Name              ; adder2                                      ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 81                                          ;
-;     Total combinational functions  ; 81                                          ;
+; Total logic elements               ; 86                                          ;
+;     Total combinational functions  ; 86                                          ;
 ;     Dedicated logic registers      ; 20                                          ;
 ; Total registers                    ; 20                                          ;
 ; Total pins                         ; 65                                          ;
@@ -164,7 +159,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
+; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
@@ -172,24 +167,25 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                     ; Library ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------+---------+
-; select_adder_4.sv                ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/select_adder_4.sv ;         ;
-; select_adder.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/select_adder.sv   ;         ;
-; router.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/router.sv         ;         ;
-; reg_17.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/reg_17.sv         ;         ;
-; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/HexDriver.sv      ;         ;
-; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/full_adder.sv     ;         ;
-; control.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/control.sv        ;         ;
-; adder2.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/ece385_summer23/lab2/adders/adder2.sv         ;         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                           ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
+; router.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/router.sv             ;         ;
+; reg_17.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/reg_17.sv             ;         ;
+; lookahead_adder_pg.sv            ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder_pg.sv ;         ;
+; lookahead_adder_4.sv             ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder_4.sv  ;         ;
+; lookahead_adder.sv               ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder.sv    ;         ;
+; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/HexDriver.sv          ;         ;
+; control.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/control.sv            ;         ;
+; adder2.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv             ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -197,16 +193,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 81        ;
+; Estimated Total logic elements              ; 86        ;
 ;                                             ;           ;
-; Total combinational functions               ; 81        ;
+; Total combinational functions               ; 86        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 61        ;
-;     -- 3 input functions                    ; 11        ;
+;     -- 4 input functions                    ; 67        ;
+;     -- 3 input functions                    ; 10        ;
 ;     -- <=2 input functions                  ; 9         ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 81        ;
+;     -- normal mode                          ; 86        ;
 ;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
 ; Total registers                             ; 20        ;
@@ -219,48 +215,33 @@ refer to the applicable agreement for further details.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; Clk~input ;
 ; Maximum fan-out                             ; 20        ;
-; Total fan-out                               ; 484       ;
-; Average fan-out                             ; 2.10      ;
+; Total fan-out                               ; 503       ;
+; Average fan-out                             ; 2.13      ;
 +---------------------------------------------+-----------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                             ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------+----------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                           ; Entity Name    ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------+----------------+--------------+
-; |adder2                    ; 81 (0)              ; 20 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 65   ; 0            ; 0          ; |adder2                                                       ; adder2         ; work         ;
-;    |HexDriver:AHex0|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:AHex0                                       ; HexDriver      ; work         ;
-;    |HexDriver:AHex1|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:AHex1                                       ; HexDriver      ; work         ;
-;    |HexDriver:BHex0|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex0                                       ; HexDriver      ; work         ;
-;    |HexDriver:BHex1|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex1                                       ; HexDriver      ; work         ;
-;    |HexDriver:BHex2|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex2                                       ; HexDriver      ; work         ;
-;    |HexDriver:BHex3|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex3                                       ; HexDriver      ; work         ;
-;    |control:run_once|      ; 3 (3)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|control:run_once                                      ; control        ; work         ;
-;    |reg_17:reg_unit|       ; 2 (2)               ; 17 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|reg_17:reg_unit                                       ; reg_17         ; work         ;
-;    |router:route|          ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|router:route                                          ; router         ; work         ;
-;    |select_adder:adders|   ; 31 (11)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders                                   ; select_adder   ; work         ;
-;       |select_adder_4:SA0| ; 7 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA0                ; select_adder_4 ; work         ;
-;          |full_adder:FA0|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA0|full_adder:FA0 ; full_adder     ; work         ;
-;          |full_adder:FA1|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA0|full_adder:FA1 ; full_adder     ; work         ;
-;          |full_adder:FA2|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA0|full_adder:FA2 ; full_adder     ; work         ;
-;          |full_adder:FA3|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA0|full_adder:FA3 ; full_adder     ; work         ;
-;       |select_adder_4:SA1| ; 5 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA1                ; select_adder_4 ; work         ;
-;          |full_adder:FA1|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA1|full_adder:FA1 ; full_adder     ; work         ;
-;          |full_adder:FA2|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA1|full_adder:FA2 ; full_adder     ; work         ;
-;          |full_adder:FA3|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA1|full_adder:FA3 ; full_adder     ; work         ;
-;       |select_adder_4:SA2| ; 2 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA2                ; select_adder_4 ; work         ;
-;          |full_adder:FA1|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA2|full_adder:FA1 ; full_adder     ; work         ;
-;          |full_adder:FA2|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA2|full_adder:FA2 ; full_adder     ; work         ;
-;       |select_adder_4:SA3| ; 2 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA3                ; select_adder_4 ; work         ;
-;          |full_adder:FA1|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA3|full_adder:FA1 ; full_adder     ; work         ;
-;       |select_adder_4:SA4| ; 1 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA4                ; select_adder_4 ; work         ;
-;          |full_adder:FA1|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA4|full_adder:FA1 ; full_adder     ; work         ;
-;       |select_adder_4:SA6| ; 3 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA6                ; select_adder_4 ; work         ;
-;          |full_adder:FA1|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA6|full_adder:FA1 ; full_adder     ; work         ;
-;          |full_adder:FA2|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA6|full_adder:FA2 ; full_adder     ; work         ;
-;          |full_adder:FA3|  ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|select_adder:adders|select_adder_4:SA6|full_adder:FA3 ; full_adder     ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------+----------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                              ;
++--------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                    ; Entity Name        ; Library Name ;
++--------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------+--------------------+--------------+
+; |adder2                        ; 86 (0)              ; 20 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 65   ; 0            ; 0          ; |adder2                                                ; adder2             ; work         ;
+;    |HexDriver:AHex0|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:AHex0                                ; HexDriver          ; work         ;
+;    |HexDriver:AHex1|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:AHex1                                ; HexDriver          ; work         ;
+;    |HexDriver:BHex0|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex0                                ; HexDriver          ; work         ;
+;    |HexDriver:BHex1|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex1                                ; HexDriver          ; work         ;
+;    |HexDriver:BHex2|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex2                                ; HexDriver          ; work         ;
+;    |HexDriver:BHex3|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|HexDriver:BHex3                                ; HexDriver          ; work         ;
+;    |control:run_once|          ; 3 (3)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|control:run_once                               ; control            ; work         ;
+;    |lookahead_adder:adderla|   ; 41 (8)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla                        ; lookahead_adder    ; work         ;
+;       |lookahead_adder_4:LA0|  ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla|lookahead_adder_4:LA0  ; lookahead_adder_4  ; work         ;
+;       |lookahead_adder_4:LA1|  ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla|lookahead_adder_4:LA1  ; lookahead_adder_4  ; work         ;
+;       |lookahead_adder_4:LA2|  ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla|lookahead_adder_4:LA2  ; lookahead_adder_4  ; work         ;
+;       |lookahead_adder_4:LA3|  ; 4 (4)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla|lookahead_adder_4:LA3  ; lookahead_adder_4  ; work         ;
+;       |lookahead_adder_pg:PG0| ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla|lookahead_adder_pg:PG0 ; lookahead_adder_pg ; work         ;
+;       |lookahead_adder_pg:PG1| ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|lookahead_adder:adderla|lookahead_adder_pg:PG1 ; lookahead_adder_pg ; work         ;
+;    |reg_17:reg_unit|           ; 0 (0)               ; 17 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adder2|reg_17:reg_unit                                ; reg_17             ; work         ;
++--------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -292,86 +273,44 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 20    ;
-; Number of registers using Synchronous Clear  ; 3     ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Clock Enable       ; 17    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |adder2|reg_17:reg_unit|Data_Out[7]  ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |adder2|reg_17:reg_unit|Data_Out[15] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lookahead_adder:adderla|lookahead_adder_4:LA0|lookahead_adder_pg:LPG"               ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; P[3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; G[3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Pg   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Gg   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders|select_adder_4:SA6" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at VCC                             ;
-+------+-------+----------+------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lookahead_adder:adderla|lookahead_adder_pg:PG0"                                     ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; P    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; G    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders|select_adder_4:SA5" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at GND                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders|select_adder_4:SA4" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at VCC                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders|select_adder_4:SA3" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at GND                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders|select_adder_4:SA2" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at VCC                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders|select_adder_4:SA1" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at GND                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+-------------------------------------------------+
-; Port Connectivity Checks: "select_adder:adders" ;
-+------+-------+----------+-----------------------+
-; Port ; Type  ; Severity ; Details               ;
-+------+-------+----------+-----------------------+
-; cin  ; Input ; Info     ; Stuck at GND          ;
-+------+-------+----------+-----------------------+
++-----------------------------------------------------+
+; Port Connectivity Checks: "lookahead_adder:adderla" ;
++------+-------+----------+---------------------------+
+; Port ; Type  ; Severity ; Details                   ;
++------+-------+----------+---------------------------+
+; cin  ; Input ; Info     ; Stuck at GND              ;
++------+-------+----------+---------------------------+
 
 
 +------------------------------------------------+
@@ -390,19 +329,18 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; boundary_port         ; 65                          ;
 ; cycloneiii_ff         ; 20                          ;
-;     CLR               ; 4                           ;
-;     ENA CLR           ; 13                          ;
-;     ENA CLR SCLR      ; 3                           ;
-; cycloneiii_lcell_comb ; 88                          ;
-;     normal            ; 88                          ;
+;     CLR               ; 3                           ;
+;     ENA CLR           ; 17                          ;
+; cycloneiii_lcell_comb ; 93                          ;
+;     normal            ; 93                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 6                           ;
 ;         2 data inputs ; 9                           ;
-;         3 data inputs ; 11                          ;
-;         4 data inputs ; 61                          ;
+;         3 data inputs ; 10                          ;
+;         4 data inputs ; 67                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 2.66                        ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 3.33                        ;
 +-----------------------+-----------------------------+
 
 
@@ -411,7 +349,7 @@ Encoding Type:  One-Hot
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -421,72 +359,72 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Jun 23 18:22:05 2023
+    Info: Processing started: Thu Jun 29 19:17:10 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adders -c adders
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file select_adder_4.sv
-    Info (12023): Found entity 1: select_adder_4 File: C:/ece385_summer23/lab2/adders/select_adder_4.sv Line: 1
+    Info (12023): Found entity 1: select_adder_4 File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/select_adder_4.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file select_adder.sv
-    Info (12023): Found entity 1: select_adder File: C:/ece385_summer23/lab2/adders/select_adder.sv Line: 1
+    Info (12023): Found entity 1: select_adder File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/select_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file router.sv
-    Info (12023): Found entity 1: router File: C:/ece385_summer23/lab2/adders/router.sv Line: 1
+    Info (12023): Found entity 1: router File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/router.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file ripple_adder.sv
-    Info (12023): Found entity 1: ripple_adder File: C:/ece385_summer23/lab2/adders/ripple_adder.sv Line: 1
+    Info (12023): Found entity 1: ripple_adder File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/ripple_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file reg_17.sv
-    Info (12023): Found entity 1: reg_17 File: C:/ece385_summer23/lab2/adders/reg_17.sv Line: 1
+    Info (12023): Found entity 1: reg_17 File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/reg_17.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder_pg.sv
-    Info (12023): Found entity 1: lookahead_adder_pg File: C:/ece385_summer23/lab2/adders/lookahead_adder_pg.sv Line: 1
+    Info (12023): Found entity 1: lookahead_adder_pg File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder_pg.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder_4.sv
-    Info (12023): Found entity 1: lookahead_adder_4 File: C:/ece385_summer23/lab2/adders/lookahead_adder_4.sv Line: 1
+    Info (12023): Found entity 1: lookahead_adder_4 File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder_4.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file lookahead_adder.sv
-    Info (12023): Found entity 1: lookahead_adder File: C:/ece385_summer23/lab2/adders/lookahead_adder.sv Line: 1
+    Info (12023): Found entity 1: lookahead_adder File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
-    Info (12023): Found entity 1: HexDriver File: C:/ece385_summer23/lab2/adders/HexDriver.sv Line: 1
+    Info (12023): Found entity 1: HexDriver File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/HexDriver.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file full_adder.sv
-    Info (12023): Found entity 1: full_adder File: C:/ece385_summer23/lab2/adders/full_adder.sv Line: 1
+    Info (12023): Found entity 1: full_adder File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/full_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file control.sv
-    Info (12023): Found entity 1: control File: C:/ece385_summer23/lab2/adders/control.sv Line: 1
+    Info (12023): Found entity 1: control File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/control.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file adder_testbench.sv
-    Info (12023): Found entity 1: adder_testbench File: C:/ece385_summer23/lab2/adders/adder_testbench.sv Line: 1
+    Info (12023): Found entity 1: adder_testbench File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder_testbench.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file adder2.sv
-    Info (12023): Found entity 1: adder2 File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at adder_testbench.sv(24): created implicit net for "CO" File: C:/ece385_summer23/lab2/adders/adder_testbench.sv Line: 24
+    Info (12023): Found entity 1: adder2 File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at adder_testbench.sv(24): created implicit net for "CO" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder_testbench.sv Line: 24
 Info (12127): Elaborating entity "adder2" for the top level hierarchy
-Info (12128): Elaborating entity "control" for hierarchy "control:run_once" File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 30
-Info (12128): Elaborating entity "router" for hierarchy "router:route" File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 33
-Info (12128): Elaborating entity "reg_17" for hierarchy "reg_17:reg_unit" File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 36
-Info (12128): Elaborating entity "select_adder" for hierarchy "select_adder:adders" File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 44
-Info (12128): Elaborating entity "select_adder_4" for hierarchy "select_adder:adders|select_adder_4:SA0" File: C:/ece385_summer23/lab2/adders/select_adder.sv Line: 9
-Info (12128): Elaborating entity "full_adder" for hierarchy "select_adder:adders|select_adder_4:SA0|full_adder:FA0" File: C:/ece385_summer23/lab2/adders/select_adder_4.sv Line: 10
-Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:AHex0" File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 50
+Info (12128): Elaborating entity "control" for hierarchy "control:run_once" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 30
+Info (12128): Elaborating entity "router" for hierarchy "router:route" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 33
+Info (12128): Elaborating entity "reg_17" for hierarchy "reg_17:reg_unit" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 36
+Info (12128): Elaborating entity "lookahead_adder" for hierarchy "lookahead_adder:adderla" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 42
+Info (12128): Elaborating entity "lookahead_adder_pg" for hierarchy "lookahead_adder:adderla|lookahead_adder_pg:PG0" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder.sv Line: 13
+Info (12128): Elaborating entity "lookahead_adder_4" for hierarchy "lookahead_adder:adderla|lookahead_adder_4:LA0" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/lookahead_adder.sv Line: 29
+Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:AHex0" File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 50
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED[2]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
-    Warning (13410): Pin "LED[3]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
-    Warning (13410): Pin "LED[4]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
-    Warning (13410): Pin "LED[5]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
-    Warning (13410): Pin "LED[6]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
-    Warning (13410): Pin "LED[7]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
-    Warning (13410): Pin "LED[8]" is stuck at GND File: C:/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[2]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[3]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[4]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[5]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[6]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[7]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
+    Warning (13410): Pin "LED[8]" is stuck at GND File: C:/Users/ary/Desktop/ece385_summer23/lab2/adders/adder2.sv Line: 3
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 1 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/ece385_summer23/lab2/adders/output_files/adders.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/ary/Desktop/ece385_summer23/lab2/adders/output_files/adders.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 146 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 151 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 81 logic cells
+    Info (21061): Implemented 86 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 4764 megabytes
-    Info: Processing ended: Fri Jun 23 18:22:23 2023
-    Info: Elapsed time: 00:00:18
+    Info: Peak virtual memory: 4781 megabytes
+    Info: Processing ended: Thu Jun 29 19:17:24 2023
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:27
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/ece385_summer23/lab2/adders/output_files/adders.map.smsg.
+The suppressed messages can be found in C:/Users/ary/Desktop/ece385_summer23/lab2/adders/output_files/adders.map.smsg.
 
 

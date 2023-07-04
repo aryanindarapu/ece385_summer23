@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at multiplier.sv(44): always construct contains both blocking and non-blocking assignments File: C:/Users/ary/Desktop/ece385_summer23/lab3/multiplier.sv Line: 44
+Warning (10273): Verilog HDL warning at HexDriver.sv(24): extended using "x" or "z" File: C:/Users/ary/Desktop/ece385_summer23/lab3/HexDriver.sv Line: 24

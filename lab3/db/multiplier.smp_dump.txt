@@ -1,0 +1,29 @@
+
+State Machine - |multiplier|control:ctrl|prev_next_state
+Name prev_next_state.RESET prev_next_state.H prev_next_state.G prev_next_state.F prev_next_state.E prev_next_state.D prev_next_state.C prev_next_state.B prev_next_state.START 
+prev_next_state.START 0 0 0 0 0 0 0 0 0 
+prev_next_state.B 0 0 0 0 0 0 0 1 1 
+prev_next_state.C 0 0 0 0 0 0 1 0 1 
+prev_next_state.D 0 0 0 0 0 1 0 0 1 
+prev_next_state.E 0 0 0 0 1 0 0 0 1 
+prev_next_state.F 0 0 0 1 0 0 0 0 1 
+prev_next_state.G 0 0 1 0 0 0 0 0 1 
+prev_next_state.H 0 1 0 0 0 0 0 0 1 
+prev_next_state.RESET 1 0 0 0 0 0 0 0 1 
+
+State Machine - |multiplier|control:ctrl|curr_state
+Name curr_state.SHIFT curr_state.SUB curr_state.ADD curr_state.START curr_state.RESET curr_state.H curr_state.G curr_state.F curr_state.E curr_state.D curr_state.C curr_state.B curr_state.A curr_state.LOAD 
+curr_state.LOAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+curr_state.A 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+curr_state.B 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+curr_state.C 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+curr_state.D 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+curr_state.E 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+curr_state.F 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+curr_state.G 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+curr_state.H 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+curr_state.RESET 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+curr_state.START 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+curr_state.ADD 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.SUB 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.SHIFT 1 0 0 0 0 0 0 0 0 0 0 0 0 1 

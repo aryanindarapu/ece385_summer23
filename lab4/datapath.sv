@@ -10,28 +10,23 @@ module datapath (
     output logic [15:0] MAR, MDR, IR
 );
 
-logic [15:0] PC, BUS, new_PC;
+logic [15:0] BUS;
 
-pcmux PM(.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .Clk(Clk), .new_PC(new_PC));
+pc_reg
+mar_reg
+mdr_reg
+ir_reg
 
-always_comb begin
-	 PC = new_PC;
-
-    // Gate Muxes
-    if (GatePC) BUS = PC;
-    else if (GateMDR) BUS = MDR;
-    // else if (GateALU) BUS = ALU;
-    // else if (GateMARMUX) BUS = MARMUX;
-    else BUS = 16'b0; // TODO: pretty sus not sure if right
-
-    // Output Muxes
+always_ff .. begin
+	// parallel load registers here
+	// Output Muxes
     if (LD_MAR == 1'b1) begin
         MAR = BUS;
     end else begin
         MAR = MAR;
     end
 
-    if (LD_MDR == 1'b1) begin
+    if (LD_MDR == 1'b1) begin // create MDR mux module
         if (MIO_EN == 1'b1) begin
             MDR = MDR_In; // data to cpu from memory
         end else begin
@@ -46,6 +41,25 @@ always_comb begin
     end else begin
         IR = IR;
     end
+	 
+	 if (LD_PC == 1'b1) begin // TODO: fix for PC
+        MAR = BUS;
+    end else begin
+        MAR = MAR;
+    end
+end
+
+pcmux PM(.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .Clk(Clk), .new_PC(new_PC));
+
+always_comb begin
+    // Gate Muxes
+    if (GatePC) BUS = PC;
+    else if (GateMDR) BUS = MDR;
+    // else if (GateALU) BUS = ALU;
+    // else if (GateMARMUX) BUS = MARMUX;
+    else BUS = 16'b0; // TODO: pretty sus not sure if right
+
+    
 end
 
 endmodule

@@ -15,18 +15,37 @@ logic [15:0] new_PC, new_MDR;
 
 reg_16 mar_reg (.Clk(Clk), .Reset(Reset), .Load(LD_MAR), .D(BUS), .Data_Out(MAR));
 reg_16 mdr_reg (.Clk(Clk), .Reset(Reset), .Load(LD_MDR), .D(new_MDR), .Data_Out(MDR));
-reg_16 ir_reg (.Clk(Clk), .Reset(Reset), .Load(LD_IR), .D(BUS), .Data_Out(PC));
-reg_16 pc_reg (.Clk(Clk), .Reset(Reset), .Load(LD_PC), .D(new_PC), .Data_Out(PC)); // gimme a sec
+reg_16 ir_reg (.Clk(Clk), .Reset(Reset), .Load(LD_IR), .D(BUS), .Data_Out(IR));
+reg_16 pc_reg (.Clk(Clk), .Reset(Reset), .Load(LD_PC), .D(new_PC), .Data_Out(PC)); 
 
 mdrmux mdrmux (.MIO_EN(MIO_EN), .MDR_In(MDR_In), .BUS(BUS), .Clk(Clk), .new_MDR(new_MDR));
 pcmux pcmux (.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .Clk(Clk), .new_PC(new_PC));
 
 always_comb begin
+	 BUS = BUS;
     // Gate Muxes
     if (GatePC) BUS = PC;
     else if (GateMDR) BUS = MDR;
     // else if (GateALU) BUS = ALU;
     // else if (GateMARMUX) BUS = MARMUX;
+	 else BUS = 16'h0;
+end
+
+always_ff begin
+//Procedure
+/* MAR <- PC 
+	PC <- PC + 1
+	
+	then 
+	
+	MDR <- M[MAR]
+	
+	then 
+	
+	IR <- MDR
+	
+	then halt/continue for week 1*/
+
 end
 
 endmodule

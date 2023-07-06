@@ -1,30 +1,30 @@
 module datapath (
+	 input  logic Clk,
     input  logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC, LD_LED,
     input  logic GatePC, GateMDR, GateALU, GateMARMUX,
     input  logic SR2MUX, ADDR1MUX, MARMUX,
     input  logic BEN, MIO_EN, DRMUX, SR1MUX,
     input  logic [1:0] PCMUX, ADDR2MUX, ALUK,
     input  logic [15:0] MDR_In,
+//	 output logic [3:0] hex_4[3:0],
     output logic [15:0] MAR, MDR, IR
 );
 
-logic [15:0] PC, BUS;
+logic [15:0] PC, BUS, new_PC;
+
+pcmux PM(.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .Clk(Clk), .new_PC(new_PC));
 
 always_comb begin
+	 PC = new_PC;
+
     // Gate Muxes
     if (GatePC) BUS = PC;
     else if (GateMDR) BUS = MDR;
-    else if (GateALU) BUS = ALU;
+    // else if (GateALU) BUS = ALU;
     // else if (GateMARMUX) BUS = MARMUX;
     else BUS = 16'b0; // TODO: pretty sus not sure if right
 
     // Output Muxes
-    case (PCMUX)
-        2'b00: PC = PC + 1;
-        2'b01: PC = BUS;
-        default: PC = PC;
-    endcase
-
     if (LD_MAR == 1'b1) begin
         MAR = BUS;
     end else begin

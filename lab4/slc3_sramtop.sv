@@ -1,5 +1,5 @@
 //SLC-3 Top level module for synthesis using physical RAM
-//All synchronizers go here (both inputs and outputs)
+//All synchronizers go here (both inputs and outputs)==
 
 
 module slc3_sramtop(

@@ -1,5 +1,6 @@
 module pcmux(
-	input  logic [15:0] PCMUX, PC, BUS,
+	input  logic [15:0] PC, BUS,
+	input logic [1:0] PCMUX,
 	input  logic Clk,
 	output logic [15:0] new_PC
 );
@@ -11,5 +12,5 @@ always_ff @ (posedge Clk) begin
         default: new_PC = PC;
     endcase
 end
-	 
+//I feel like this can be always_comb and it maybe should be	 
 endmodule

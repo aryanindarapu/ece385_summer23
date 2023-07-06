@@ -1,6 +1,6 @@
 module mdrmux(
-	input  logic [15:0] MIO_EN, MDR_In, BUS,
-	input  logic Clk,
+	input  logic [15:0] MDR_In, BUS,
+	input  logic Clk, MIO_EN,
 	output logic [15:0] new_MDR
 );
 
@@ -11,5 +11,6 @@ always_ff @ (posedge Clk) begin
         new_MDR = BUS;
     end
 end
+//I feel like this can be always_comb and it maybe should be
 	 
 endmodule

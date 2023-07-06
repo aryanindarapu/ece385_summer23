@@ -24,6 +24,7 @@ end
 
 
 initial begin
+SW = 10'b0000000000;
 Run = 1'b1;
 Continue = 1'b1;
 #5 Run = 1'b0;
@@ -34,13 +35,13 @@ Continue = 1'b1;
 #5 Run = 1'b0;
 #5 Run = 1'b1;
 
-#20 Continue = 1'b0;
+#50 Continue = 1'b0;
 #5 Continue = 1'b1;
 
-#20 Continue = 1'b0;
+#50 Continue = 1'b0;
 #5 Continue = 1'b1;
 
-#20 Continue = 1'b0;
+#50 Continue = 1'b0;
 #5 Continue = 1'b1;
 
 end

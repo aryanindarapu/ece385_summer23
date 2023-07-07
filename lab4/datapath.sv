@@ -12,7 +12,7 @@ module datapath (
 
 logic [3:0] gates;
 assign gates = {GatePC, GateMDR, GateALU, GateMARMUX};
-logic [15:0] PC, BUS, new_BUS;
+logic [15:0] PC, BUS	;
 logic [15:0] new_PC, new_MDR;
 
 reg_16 mar_reg (.Clk(Clk), .Reset(Reset), .Load(LD_MAR), .D(BUS), .Data_Out(MAR));

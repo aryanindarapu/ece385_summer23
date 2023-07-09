@@ -25,8 +25,7 @@ marmux marm (.IR(IR), .PC(PC), .SR1_OUT(SR1_OUT), .ADDR2MUX(ADDR2MUX), .ADDR1MUX
 pcmux pcm (.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .Clk(Clk), .new_PC(new_PC));
 regfile reg (.DRMUX(DRMUX), .SR1MUX(SR1MUX), .LD_REG(LD_REG), .IR(IR), .BUS(BUS), .SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT));
 conditioncode cc (.IR(IR), .BUS(BUS), .LD_CC(LD_CC), .Reset(Reset), .Clk(Clk), .BEN(BEN));
-
-alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .GateALU(GateALU), .new_ALU(new_ALU)); // TODO: Need to properly work out
+alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .GateALU(GateALU), .new_ALU(new_ALU));
 
 always_comb begin
 	if (gates == 4'b1000) // GatePC
@@ -34,9 +33,9 @@ always_comb begin
 	else if (gates == 4'b0100) // GateMDR
 		BUS = MDR; 
 	else if (gates == 4'b0010) // GateALU
-		BUS = new_ALU; //WHATEVER THE ALU OUPUT WOULD BE
+		BUS = new_ALU;
 	else if (gates == 4'b0001) // GateMARMUX
-		BUS = new_MAR; //WHATEVER MARMUX DOES
+		BUS = new_MAR;
 	else 
 		BUS = 16'bxxxxxxxxxxxxxxxx;
 end

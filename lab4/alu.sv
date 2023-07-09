@@ -22,10 +22,10 @@ always_comb begin
     end
 
     case (ALUK): // idk is this is correct
-        2'b00: new_ALU = SR1_OUT + SR2_OUT;
-        2'b01: new_ALU = SR1_OUT & SR2_OUT;
-        2'b10: new_ALU = SR1_OUT ^ SR2_OUT; // TODO: how to do not?
-        2'b11: new_ALU = SR1_OUT;
+        2'b00: new_ALU = A + B;
+        2'b01: new_ALU = A & B;
+        2'b10: new_ALU = A ^ B; // TODO: how to do not?
+        2'b11: new_ALU = A;
     endcase
 end
 

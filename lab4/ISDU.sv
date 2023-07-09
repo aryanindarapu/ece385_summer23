@@ -62,7 +62,7 @@ module ISDU (   input logic         Clk,
 						S_33_4, 
 						S_35, 
 						S_32, 
-						S_01}   State, Next_state;   // Internal state logic
+						S_01 }   State, Next_state;   // Internal state logic
 		
 	always_ff @ (posedge Clk)
 	begin
@@ -182,11 +182,13 @@ module ISDU (   input logic         Clk,
 				LD_BEN = 1'b1;
 			S_01 : 
 				begin 
-					SR2MUX = IR_5;
 					ALUK = 2'b00;
 					GateALU = 1'b1;
 					LD_REG = 1'b1;
-					// incomplete...
+					DRMUX = 2'b00;
+					SR1MUX = 2'b01;
+					SR2MUX = IR_5;
+					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
 
 			// You need to finish the rest of states.....

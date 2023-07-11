@@ -1,6 +1,6 @@
 module mdrmux(
 	input  logic [15:0] MDR_In, BUS,
-	input  logic Clk, MIO_EN,
+	input  logic MIO_EN,
 	output logic [15:0] new_MDR
 );
 

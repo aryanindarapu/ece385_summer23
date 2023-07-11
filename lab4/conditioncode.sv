@@ -1,6 +1,6 @@
 module conditioncode (
 	input  logic [15:0] IR, BUS,
-    input  logic LD_CC, Reset, Clk,
+    input  logic LD_CC, Reset, Clk, LD_BEN,
     output logic BEN
 );
 

@@ -20,11 +20,11 @@ reg_16 mdr_reg (.Clk(Clk), .Reset(Reset), .Load(LD_MDR), .D(new_MDR), .Data_Out(
 reg_16 ir_reg (.Clk(Clk), .Reset(Reset), .Load(LD_IR), .D(BUS), .Data_Out(IR));
 reg_16 pc_reg (.Clk(Clk), .Reset(Reset), .Load(LD_PC), .D(new_PC), .Data_Out(PC));
 
-mdrmux mdrm (.MIO_EN(MIO_EN), .MDR_In(MDR_In), .BUS(BUS), .Clk(Clk), .new_MDR(new_MDR));
-marmux marm (.IR(IR), .PC(PC), .SR1_OUT(SR1_OUT), .ADDR2MUX(ADDR2MUX), .ADDR1MUX(ADDR1MUX), .Clk(Clk), .new_MAR(new_MAR));
-pcmux pcm (.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .Clk(Clk), .new_PC(new_PC));
-regfile reg (.DRMUX(DRMUX), .SR1MUX(SR1MUX), .LD_REG(LD_REG), .IR(IR), .BUS(BUS), .SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT));
-conditioncode cc (.IR(IR), .BUS(BUS), .LD_CC(LD_CC), .Reset(Reset), .Clk(Clk), .BEN(BEN));
+mdrmux mdrm (.MIO_EN(MIO_EN), .MDR_In(MDR_In), .BUS(BUS), .new_MDR(new_MDR));
+marmux marm (.IR(IR), .PC(PC), .SR1_OUT(SR1_OUT), .ADDR2MUX(ADDR2MUX), .ADDR1MUX(ADDR1MUX), .new_MAR(new_MAR));
+pcmux pcm (.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .new_PC(new_PC));
+regfile regunit(.DRMUX(DRMUX), .SR1MUX(SR1MUX), .LD_REG(LD_REG), .IR(IR), .BUS(BUS), .SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .Clk(Clk));
+conditioncode cc (.IR(IR), .BUS(BUS), .LD_CC(LD_CC), .Reset(Reset), .Clk(Clk), .BEN(BEN), .LD_BEN(LD_BEN));
 alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .GateALU(GateALU), .new_ALU(new_ALU));
 
 always_comb begin

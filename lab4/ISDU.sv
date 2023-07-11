@@ -141,7 +141,7 @@ module ISDU (   input logic         Clk,
 			S_33_4 : 
 				Next_state = S_35;
 			S_35 : 
-				Next_state = PauseIR1;
+				Next_state = S_32;
 			// PauseIR1 and PauseIR2 are only for Week 1 such that TAs can see 
 			// the values in IR.
 			PauseIR1 : 
@@ -357,7 +357,7 @@ module ISDU (   input logic         Clk,
 				begin
 					SR1MUX = 1'b0;
 					ALUK = 2'b11;
-					Gate_ALU = 1'b1;
+					GateALU = 1'b1;
 					LD_MDR = 1'b1;
 				end 
 

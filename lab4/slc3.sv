@@ -57,11 +57,12 @@ assign MIO_EN = OE;
 // Connect everything to the data path (you have to figure out this part)
 datapath d0 (.*);
 
-// Connect IR bits to Hex drivers
+// Connect IR bits to Hex drivers //THIS WAS FOR WEEK 1
 //assign hex_4[0] = IR[3:0];
 //assign hex_4[1] = IR[7:4];
 //assign hex_4[2] = IR[11:8];
-//assign hex_4[3] = IR[15:12]; 
+//assign hex_4[3] = IR[15:12];
+
 
 // Our SRAM and I/O controller (note, this plugs into MDR/MAR)
 

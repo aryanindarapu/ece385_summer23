@@ -32,26 +32,37 @@ Continue = 1'b0;
 #5 Run = 1'b1;
 Continue = 1'b1;
 
+//SPECIFY WHICH OPERATION TYPE WE ARE DOING
+SW = 10'b0000010100; //first IO operation(should withhold the switch value)
+///////////////////////////////////////////
+
 #5 Run = 1'b0;
 #5 Run = 1'b1;
 
-#50 Continue = 1'b0;
+SW = 10'b0000001010;
+
+#200 Continue = 1'b0;
 #5 Continue = 1'b1;
 
-#50 Continue = 1'b0;
+#200 SW = 10'b0000000101;
+
+Continue = 1'b0;
 #5 Continue = 1'b1;
 
-#50 Continue = 1'b0;
+#200 Continue = 1'b0;
 #5 Continue = 1'b1;
-
-#50 Continue = 1'b0;
-#5 Continue = 1'b1;
-
-#50 Continue = 1'b0;
-#5 Continue = 1'b1;
-
-#50 Continue = 1'b0;
-#5 Continue = 1'b1;
+//
+//#50 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#50 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#50 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#50 Continue = 1'b0;
+//#5 Continue = 1'b1;
 
 end
 

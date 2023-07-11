@@ -4,6 +4,9 @@ module conditioncode (
     output logic BEN
 );
 
+logic temp_BEN;
+logic [2:0] CC; // register for cc
+
 always_ff @ (posedge Clk) begin
     if (Reset)
         BEN <= 1'b0;
@@ -12,15 +15,12 @@ always_ff @ (posedge Clk) begin
         BEN <= temp_BEN;
 end
 
-// register for cc
-logic [2:0] CC;
 reg_cc r_CC (.Clk(Clk), .Reset(Reset), .LD_CC(LD_CC), .BUS(BUS), .Data_Out(CC));
 
-logic temp_BEN;
 
 always_comb begin
     // Set new_BEN based on LD_BEN and BEN
-    temp_BEN = CC[2] & IR[11] + CC[1] & IR[10] + CC[0] & IR[9];
+    temp_BEN = (CC[2] & IR[11]) | (CC[1] & IR[10]) | (CC[0] & IR[9]); //+ is arithmetic add we need to do OR
 end
 	 
 endmodule

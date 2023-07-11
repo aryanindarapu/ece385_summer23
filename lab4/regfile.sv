@@ -14,8 +14,6 @@ always_ff @ (posedge Clk) begin
     end else if (LD_REG) begin
         regs[DR] <= BUS;
     end
-	 
-	 
 end
 
 
@@ -30,7 +28,7 @@ always_comb begin
     else // 1
         SR1 = IR[8:6];
 		  
-	 SR1_OUT = regs[SR1];
+    SR1_OUT = regs[SR1];
     SR2_OUT = regs[IR[2:0]];
 
 end

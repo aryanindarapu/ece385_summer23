@@ -63,9 +63,9 @@ module ISDU (   input logic         Clk,
 						S_35, 
 						S_32, 
 						S_01,
-						  S_05,
-						  S_09,
-						  S_06,
+						S_05,
+						S_09,
+						S_06,
 						S_25,
 						S_27,
 						S_07,
@@ -75,7 +75,7 @@ module ISDU (   input logic         Clk,
 						S_22,
 						S_12,
 						S_04,
-						S_21}   State, Next_state;   // Internal state logic
+						S_21  }   State, Next_state;   // Internal state logic
 		
 	always_ff @ (posedge Clk)
 	begin
@@ -128,7 +128,7 @@ module ISDU (   input logic         Clk,
 			// The exact number will be discussed in lecture.
 			S_33_1 : 
 				Next_state = S_33_2;
-			S_33_2 : 
+			S_33_2 : // TODO: remove pause states
 				Next_state = S_33_3;
 			S_33_3 : 
 				Next_state = S_33_4;
@@ -152,8 +152,20 @@ module ISDU (   input logic         Clk,
 				case (Opcode)
 					4'b0001 : 
 						Next_state = S_01;
-
-					// You need to finish the rest of opcodes.....
+					4'b0101 :
+						Next_state = S_05;
+					4'b1001 :
+						Next_state = S_09;
+					4'b0110 :
+						Next_state = S_06;
+					4'b0111 :
+						Next_state = S_07;
+					4'b0100 :
+						Next_state = S_04;
+					4'b1100:
+						Next_state = S_12;
+					4'b0000:
+						Next_state = S_00;
 
 					default : 
 						Next_state = S_18;
@@ -161,7 +173,23 @@ module ISDU (   input logic         Clk,
 			S_01 : 
 				Next_state = S_18;
 
-			// You need to finish the rest of states.....
+			S_04 : 
+				Next_state = S_21;
+
+			S_21 : 
+				Next_state = S_18;
+			
+			S_12 : 
+				Next_state = S_18;
+
+			S_00 :
+				if (BEN) 
+					Next_state = S_22;
+				else 
+					Next_state = S_18;
+			
+			S_22 : 
+				Next_state = S_18;
 
 			default : ;
 
@@ -177,23 +205,27 @@ module ISDU (   input logic         Clk,
 					PCMUX = 2'b00;
 					LD_PC = 1'b1;
 				end
+
 			S_33_1, S_33_2, S_33_3 : 
 				Mem_OE = 1'b1;
+				
 			S_33_4 : 
 				begin 
 					Mem_OE = 1'b1;
 					LD_MDR = 1'b1;
 				end
+
 			S_35 : 
 				begin 
 					GateMDR = 1'b1;
 					LD_IR = 1'b1;
 				end
+
 			PauseIR1: ;
 			PauseIR2: ;
 			S_32 : 
 				LD_BEN = 1'b1;
-			S_01 : //ADD
+			S_01 : // ADD
 				begin 
 					ALUK = 2'b00;
 					GateALU = 1'b1;
@@ -203,7 +235,8 @@ module ISDU (   input logic         Clk,
 					SR2MUX = IR_5;
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
-			S_05 : //AND
+
+			S_05 : // AND
 				begin
 					ALUK = 2'b01;
 					GateALU = 1'b1;
@@ -213,7 +246,8 @@ module ISDU (   input logic         Clk,
 					SR2MUX = IR_5; //SR2 specification bit
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
-			S_09 : //NOT
+
+			S_09 : // NOT
 				begin
 					ALUK = 2'b10;
 					GateALU = 1'b1;
@@ -223,9 +257,43 @@ module ISDU (   input logic         Clk,
 					SR2MUX = IR_5; //SR2 specification bit
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
-			S_06 : //LDR
+
+			S_06 : // LDR
 				begin
 					
+				end
+
+			S_04 : // JSR
+				begin
+					GatePC = 1'b1;
+					LD_REG = 1'b1;
+					DRMUX = 1'b1;
+				end
+
+			S_21 :
+				begin
+					LD_PC = 1'b1;
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b11;
+					PCMUX = 2'b10;
+				end
+
+			S_12 : // JMP
+				begin
+					PCMUX = 2'b01;
+					LD_PC = 1'b1;
+					SR1MUX = 1'b1;
+					ALUK = 2'b11;
+					GateALU = 1'b1;
+				end
+			S_00 : // BR
+
+			S_22 : // 
+				begin
+					LD_PC = 1'b1;
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b10;
+					PCMUX = 2'b10;
 				end
 
 			// You need to finish the rest of states.....

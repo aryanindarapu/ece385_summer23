@@ -63,9 +63,9 @@ module ISDU (   input logic         Clk,
 						S_35, 
 						S_32, 
 						S_01,
-						  S_05,
-						  S_09,
-						  S_06,
+						S_05,
+						S_09,
+						S_06,
 						S_25_1,
 						S_25_2, 
 						S_25_3, 
@@ -172,22 +172,72 @@ module ISDU (   input logic         Clk,
 						Next_state = S_12;
 					4'b0000:
 						Next_state = S_00;
+					4'b1101:
+						Next_state = PauseIR1;
 
 					default : 
 						Next_state = S_18;
 				endcase
+			
+			// ADD
 			S_01 : 
 				Next_state = S_18;
+			
+			// AND
+			S_05 :
+				Next_state = S_18;
 
+			// NOT
+			S_09 :
+				Next_state = S_18;
+
+			// LDR ////////////////////
+			S_06 :
+				Next_state = S_25_1;
+
+			S_25_1 :
+				Next_state = S_25_2;
+			S_25_2 :
+				Next_state = S_25_3;
+			S_25_3 :
+				Next_state = S_25_4;
+			S_25_4 :
+				Next_state = S_27;
+			
+			S_27 :
+				Next_state = S_18;
+			///////////////////////////
+
+			// STR ////////////////////
+			S_07 :
+				Next_state = S_23;
+
+			S_23 :
+				Next_state = S_16_1;
+
+			S_16_1 :
+				Next_state = S_16_2;
+			S_16_2 :
+				Next_state = S_16_3;
+			S_16_3 :
+				Next_state = S_16_4;
+			S_16_4 :
+				Next_state = S_18;
+			///////////////////////////
+
+			// JSR ////////////////////
 			S_04 : 
 				Next_state = S_21;
 
 			S_21 : 
 				Next_state = S_18;
-			
+			///////////////////////////
+
+			// JMP
 			S_12 : 
 				Next_state = S_18;
 
+			// BR /////////////////////
 			S_00 :
 				if (BEN) 
 					Next_state = S_22;
@@ -196,7 +246,7 @@ module ISDU (   input logic         Clk,
 			
 			S_22 : 
 				Next_state = S_18;
-
+			///////////////////////////
 			default : ;
 
 		endcase
@@ -204,6 +254,7 @@ module ISDU (   input logic         Clk,
 		// Assign control signals based on current state
 		case (State)
 			Halted: ;
+			// FETCH //////////////////////////////////
 			S_18 : 
 				begin 
 					GatePC = 1'b1;
@@ -226,11 +277,14 @@ module ISDU (   input logic         Clk,
 					GateMDR = 1'b1;
 					LD_IR = 1'b1;
 				end
-
+			
 			PauseIR1: ;
 			PauseIR2: ;
+
 			S_32 : 
 				LD_BEN = 1'b1;
+			//////////////////////////////////////////
+
 			S_01 : // ADD
 				begin 
 					ALUK = 2'b00;
@@ -271,26 +325,32 @@ module ISDU (   input logic         Clk,
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 				end
-			S_25_1, S_25_2, S_25_3: //LDR
-					Mem_OE = 1'b1;
+
+			S_25_1, S_25_2, S_25_3:
+				Mem_OE = 1'b1;
+
 			S_25_4 : 
 				begin
 					Mem_OE = 1'b1;
 					LD_MDR = 1'b1;
 				end
-			S_27 : //still LDR
+
+			S_27 :
 				begin
 					LD_REG = 1'b1;
 					GateMDR = 1'b1;
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
-			S_07 : //STR
+
+			S_07 : // STR
+
 				begin
 					ADDR2MUX = 2'b01; //sext6 +base reg
 					ADDR1MUX = 1'b1; //BaseR
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 				end
+
 			S_23:
 				begin
 					LD_MDR = 1'b1;
@@ -298,6 +358,7 @@ module ISDU (   input logic         Clk,
 					ALUK = 2'b11;
 					SR1MUX = 1'b0;
 				end 
+
 			S_16_1, S_16_2, S_16_3, S_16_4: //give it wait time to write into memory
 				begin
 					Mem_WE = 1'b1;

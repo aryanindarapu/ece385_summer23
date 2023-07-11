@@ -14,7 +14,7 @@ always_comb begin
     if (SR2MUX) begin
         B = SR2_OUT;
     end else begin
-        if (IR[4] == 1'b0) begin
+        if (IR[4] == 1'b0) begin // NOTE: We are SEXTing
             B = {11'b0, IR[4:0]};
         end else begin
             B = {11'b1, IR[4:0]};
@@ -24,7 +24,7 @@ always_comb begin
     case (ALUK): // idk is this is correct
         2'b00: new_ALU = A + B;
         2'b01: new_ALU = A & B;
-        2'b10: new_ALU = A ^ B; // TODO: how to do not?
+        2'b10: new_ALU = ~A; // TODO: how to do not?
         2'b11: new_ALU = A;
     endcase
 end

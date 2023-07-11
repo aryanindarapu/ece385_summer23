@@ -1,4 +1,4 @@
-module reg_cc (input  logic Clk, Reset, Load,
+module reg_cc (input  logic Clk, Reset, LD_CC,
                input  logic [15:0] BUS,
                output logic [2:0]  Data_Out);
 
@@ -13,11 +13,11 @@ always_ff @ (posedge Clk)
     end
 
 always_comb begin
-    if (BUS == 16'b0) 
+    if (BUS == 16'b0) // Z
         D = 3'b010;
-    else if (BUS[15] == 1'b1)
+    else if (BUS[15] == 1'b1) // N
         D = 3'b100;
-    else 
+    else // P
         D = 3'b001;
 end
 

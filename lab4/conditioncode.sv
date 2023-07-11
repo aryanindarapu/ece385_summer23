@@ -1,6 +1,6 @@
-module conditioncode (
+module conditioncode ('
+    input  logic Clk, Reset, LD_CC, LD_BEN,
 	input  logic [15:0] IR, BUS,
-    input  logic LD_CC, Reset, Clk, LD_BEN,
     output logic BEN
 );
 
@@ -14,7 +14,7 @@ end
 
 // register for cc
 logic [2:0] CC;
-reg_cc CC (.Clk(Clk), .Reset(Reset), .Load(LD_CC), .BUS(BUS), .Data_Out(CC));
+reg_cc CC (.Clk(Clk), .Reset(Reset), .LD_CC(LD_CC), .BUS(BUS), .Data_Out(CC));
 
 logic temp_BEN;
 

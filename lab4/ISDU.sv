@@ -62,7 +62,20 @@ module ISDU (   input logic         Clk,
 						S_33_4, 
 						S_35, 
 						S_32, 
-						S_01 }   State, Next_state;   // Internal state logic
+						S_01,
+						  S_05,
+						  S_09,
+						  S_06,
+						S_25,
+						S_27,
+						S_07,
+						S_23,
+						S_16,
+						S_00,
+						S_22,
+						S_12,
+						S_04,
+						S_21}   State, Next_state;   // Internal state logic
 		
 	always_ff @ (posedge Clk)
 	begin
@@ -180,15 +193,39 @@ module ISDU (   input logic         Clk,
 			PauseIR2: ;
 			S_32 : 
 				LD_BEN = 1'b1;
-			S_01 : 
+			S_01 : //ADD
 				begin 
 					ALUK = 2'b00;
 					GateALU = 1'b1;
 					LD_REG = 1'b1;
-					DRMUX = 2'b00;
-					SR1MUX = 2'b01;
+					DRMUX = 1'b0; // DR = IR[11:9] for ADD and AND
+					SR1MUX = 1'b1; // SR1 = IR[8:6] for ADD and AND
 					SR2MUX = IR_5;
 					LD_CC = 1'b1; // set whenever we see "set CC"
+				end
+			S_05 : //AND
+				begin
+					ALUK = 2'b01;
+					GateALU = 1'b1;
+					LD_REG = 1'b1;
+					DRMUX = 1'b0;
+					SR1MUX = 1'b1;
+					SR2MUX = IR_5; //SR2 specification bit
+					LD_CC = 1'b1; // set whenever we see "set CC"
+				end
+			S_09 : //NOT
+				begin
+					ALUK = 2'b10;
+					GateALU = 1'b1;
+					LD_REG = 1'b1;
+					DRMUX = 1'b0;
+					SR1MUX = 1'b1;
+					SR2MUX = IR_5; //SR2 specification bit
+					LD_CC = 1'b1; // set whenever we see "set CC"
+				end
+			S_06 : //LDR
+				begin
+					
 				end
 
 			// You need to finish the rest of states.....

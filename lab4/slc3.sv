@@ -58,17 +58,17 @@ assign MIO_EN = OE;
 datapath d0 (.*);
 
 // Connect IR bits to Hex drivers
-assign hex_4[0] = IR[3:0];
-assign hex_4[1] = IR[7:4];
-assign hex_4[2] = IR[11:8];
-assign hex_4[3] = IR[15:12]; 
+//assign hex_4[0] = IR[3:0];
+//assign hex_4[1] = IR[7:4];
+//assign hex_4[2] = IR[11:8];
+//assign hex_4[3] = IR[15:12]; 
 
 // Our SRAM and I/O controller (note, this plugs into MDR/MAR)
 
 Mem2IO memory_subsystem(
     .*, .Reset(Reset), .ADDR(ADDR), .Switches(SW),
-    // .HEX0(hex_4[0][3:0]), .HEX1(hex_4[1][3:0]), .HEX2(hex_4[2][3:0]), .HEX3(hex_4[3][3:0]),
-	 .HEX0(), .HEX1(), .HEX2(), .HEX3(),
+    .HEX0(hex_4[0][3:0]), .HEX1(hex_4[1][3:0]), .HEX2(hex_4[2][3:0]), .HEX3(hex_4[3][3:0]),
+//	 .HEX0(), .HEX1(), .HEX2(), .HEX3(),
     .Data_from_CPU(MDR), .Data_to_CPU(MDR_In),
     .Data_from_SRAM(Data_from_SRAM), .Data_to_SRAM(Data_to_SRAM)
 );

@@ -6,7 +6,7 @@ module datapath (
     input  logic MIO_EN, DRMUX, SR1MUX,
     input  logic [1:0] PCMUX, ADDR2MUX, ALUK,
     input  logic [15:0] MDR_In,
-    output logic [15:0] MAR, MDR, IR
+    output logic [15:0] MAR, MDR, IR,
 	output logic BEN
 );
 
@@ -23,9 +23,9 @@ reg_16 pc_reg (.Clk(Clk), .Reset(Reset), .Load(LD_PC), .D(new_PC), .Data_Out(PC)
 mdrmux mdrm (.MIO_EN(MIO_EN), .MDR_In(MDR_In), .BUS(BUS), .new_MDR(new_MDR));
 marmux marm (.IR(IR), .PC(PC), .SR1_OUT(SR1_OUT), .ADDR2MUX(ADDR2MUX), .ADDR1MUX(ADDR1MUX), .new_MAR(new_MAR));
 pcmux pcm (.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .new_PC(new_PC));
-regfile regunit(.DRMUX(DRMUX), .SR1MUX(SR1MUX), .LD_REG(LD_REG), .IR(IR), .BUS(BUS), .SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .Clk(Clk));
+regfile regunit (.Clk(Clk), .Reset(Reset), .DRMUX(DRMUX), .SR1MUX(SR1MUX), .LD_REG(LD_REG), .IR(IR), .BUS(BUS), .SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT));
 conditioncode cc (.IR(IR), .BUS(BUS), .LD_CC(LD_CC), .Reset(Reset), .Clk(Clk), .BEN(BEN), .LD_BEN(LD_BEN));
-alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .GateALU(GateALU), .new_ALU(new_ALU));
+alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .new_ALU(new_ALU));
 
 always_comb begin
 	if (gates == 4'b1000) // GatePC

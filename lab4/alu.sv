@@ -3,7 +3,7 @@ module alu (
     input logic [4:0] IR,
     input logic [1:0] ALUK,
     input logic SR2MUX, 
-    output logic new_ALU
+    output logic [15:0] new_ALU
 );
 
 logic [15:0] A, B;
@@ -14,14 +14,11 @@ always_comb begin
     if (SR2MUX) begin
         B = SR2_OUT;
     end else begin
-        if (IR[4] == 1'b0) begin
-            B = {11'b0, IR[4:0]};
-        end else begin
-            B = {11'b1, IR[4:0]};
-        end
+        B = {{11{IR[4]}}, IR[4:0]};
+
     end
 
-    case (ALUK): // idk is this is correct
+    case (ALUK) // idk is this is correct
         2'b00: new_ALU = A + B;
         2'b01: new_ALU = A & B;
         2'b10: new_ALU = ~A; // TODO: how to do not?

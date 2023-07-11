@@ -63,14 +63,20 @@ module ISDU (   input logic         Clk,
 						S_35, 
 						S_32, 
 						S_01,
-						S_05,
-						S_09,
-						S_06,
-						S_25,
+						  S_05,
+						  S_09,
+						  S_06,
+						S_25_1,
+						S_25_2, 
+						S_25_3, 
+						S_25_4,
 						S_27,
 						S_07,
 						S_23,
-						S_16,
+						S_16_1,
+						S_16_2,
+						S_16_3,
+						S_16_4,
 						S_00,
 						S_22,
 						S_12,
@@ -260,40 +266,42 @@ module ISDU (   input logic         Clk,
 
 			S_06 : // LDR
 				begin
-					
+					ADDR2MUX = 2'b01; //sext6 +base reg
+					ADDR1MUX = 1'b1; //BaseR
+					GateMARMUX = 1'b1;
+					LD_MAR = 1'b1;
 				end
-
-			S_04 : // JSR
+			S_25_1, S_25_2, S_25_3: //LDR
+					Mem_OE = 1'b1;
+			S_25_4 : 
 				begin
-					GatePC = 1'b1;
+					Mem_OE = 1'b1;
+					LD_MDR = 1'b1;
+				end
+			S_27 : //still LDR
+				begin
 					LD_REG = 1'b1;
-					DRMUX = 1'b1;
+					GateMDR = 1'b1;
+					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
-
-			S_21 :
+			S_07 : //STR
 				begin
-					LD_PC = 1'b1;
-					ADDR1MUX = 1'b0;
-					ADDR2MUX = 2'b11;
-					PCMUX = 2'b10;
+					ADDR2MUX = 2'b01; //sext6 +base reg
+					ADDR1MUX = 1'b1; //BaseR
+					GateMARMUX = 1'b1;
+					LD_MAR = 1'b1;
 				end
-
-			S_12 : // JMP
+			S_23:
 				begin
-					PCMUX = 2'b01;
-					LD_PC = 1'b1;
-					SR1MUX = 1'b1;
+					LD_MDR = 1'b1;
+					Gate_ALU = 1'b1;
 					ALUK = 2'b11;
-					GateALU = 1'b1;
-				end
-			S_00 : // BR
-
-			S_22 : // 
+					SR1MUX = 1'b0;
+				end 
+			S_16_1, S_16_2, S_16_3, S_16_4: //give it wait time to write into memory
 				begin
-					LD_PC = 1'b1;
-					ADDR1MUX = 1'b0;
-					ADDR2MUX = 2'b10;
-					PCMUX = 2'b10;
+					Mem_WE = 1'b1;
+					GateMDR = 1'b1;
 				end
 
 			// You need to finish the rest of states.....

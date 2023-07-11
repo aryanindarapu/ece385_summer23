@@ -303,7 +303,7 @@ module ISDU (   input logic         Clk,
 					LD_REG = 1'b1;
 					DRMUX = 1'b0;
 					SR1MUX = 1'b1;
-					SR2MUX = IR_5; //SR2 specification bit
+					SR2MUX = IR_5; // SR2 specification bit
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
 
@@ -314,14 +314,15 @@ module ISDU (   input logic         Clk,
 					LD_REG = 1'b1;
 					DRMUX = 1'b0;
 					SR1MUX = 1'b1;
-					SR2MUX = IR_5; //SR2 specification bit
+					SR2MUX = IR_5; // SR2 specification bit
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
 
 			S_06 : // LDR
 				begin
-					ADDR2MUX = 2'b01; //sext6 +base reg
-					ADDR1MUX = 1'b1; //BaseR
+					SR1MUX = 1'b1; // SR1 = IR[8:6] (BaseR)
+					ADDR1MUX = 1'b1; // BaseR
+					ADDR2MUX = 2'b01; // BaseR + off6
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 				end
@@ -337,35 +338,68 @@ module ISDU (   input logic         Clk,
 
 			S_27 :
 				begin
-					LD_REG = 1'b1;
 					GateMDR = 1'b1;
+					DRMUX = 1'b0;
+					LD_REG = 1'b1;
 					LD_CC = 1'b1; // set whenever we see "set CC"
 				end
 
 			S_07 : // STR
-
 				begin
-					ADDR2MUX = 2'b01; //sext6 +base reg
-					ADDR1MUX = 1'b1; //BaseR
+					SR1MUX = 1'b1; // SR1 = IR[8:6] (BaseR)
+					ADDR1MUX = 1'b1; // BaseR
+					ADDR2MUX = 2'b01; // BaseR + off6
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 				end
 
 			S_23:
 				begin
-					LD_MDR = 1'b1;
-					Gate_ALU = 1'b1;
-					ALUK = 2'b11;
 					SR1MUX = 1'b0;
+					ALUK = 2'b11;
+					Gate_ALU = 1'b1;
+					LD_MDR = 1'b1;
 				end 
 
-			S_16_1, S_16_2, S_16_3, S_16_4: //give it wait time to write into memory
+			S_16_1, S_16_2, S_16_3, S_16_4: // give it wait time to write into memory
 				begin
 					Mem_WE = 1'b1;
 					GateMDR = 1'b1;
 				end
 
-			// You need to finish the rest of states.....
+			S_04 : // JSR
+				begin
+					GatePC = 1'b1;
+					LD_REG = 1'b1;
+					DRMUX = 1'b1;
+				end
+
+			S_21 :
+				begin
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b11;
+					PCMUX = 2'b10;
+					LD_PC = 1'b1;
+				end
+
+			S_12 : // JMP
+				begin // NOTE: Can also do this through BUS w/ GateALU and ALUK = 11
+					SR1MUX = 1'b1;
+					ADDR1MUX = 1'b1;
+					ADDR2MUX = 2'b00;
+					PCMUX = 2'b10;
+					LD_PC = 1'b1;
+				end
+
+			S_00 : ; // BR
+
+			S_22 :
+				begin
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b10;
+					PCMUX = 2'b10;
+					LD_PC = 1'b1;
+				end
 
 			default : ;
 		endcase

@@ -6,7 +6,7 @@ module pcmux(
 
 always_comb begin
     case (PCMUX)
-        2'b00: new_PC = PC + 1;
+        2'b00: new_PC = PC + 1'b1;
         2'b01: new_PC = BUS;
         default: new_PC = PC;
     endcase

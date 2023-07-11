@@ -7,7 +7,7 @@ always_ff @ (posedge Clk)
     begin
         if (Reset) //notice, this is a sycnrhonous reset, which is recommended on the FPGA
             Data_Out <= 3'b0;
-        else if (Load) begin
+        else if (LD_CC) begin
             Data_Out <= D;
         end
     end

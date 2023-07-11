@@ -185,7 +185,7 @@ module ISDU (   input logic         Clk,
 					ALUK = 2'b00;
 					GateALU = 1'b1;
 					LD_REG = 1'b1;
-					DRMUX = 2'b00;
+					DRMUX = 1'b0;
 					SR1MUX = 2'b01;
 					SR2MUX = IR_5;
 					LD_CC = 1'b1; // set whenever we see "set CC"

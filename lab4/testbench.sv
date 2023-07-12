@@ -34,7 +34,7 @@ Continue = 1'b1;
 
 //NOTE THAT TEST 1, 2, selfmodifying, and XOR test all work and WE DONT NEED THE AUTO COUNTER TEST IT WAS OMMITTED THIS YEAR
 //SPECIFY WHICH OPERATION TYPE WE ARE DOING
-#10 SW = 10'b0000110001; //first IO operation(should withhold the switch value)
+#10 SW = 10'b0000010100;
 ///////////////////////////////////////////
 
 

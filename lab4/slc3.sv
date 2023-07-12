@@ -54,6 +54,7 @@ logic [15:0] MAR, MDR, IR;
 //	input into MDR)
 assign ADDR = MAR; 
 assign MIO_EN = OE;
+assign LED = IR[9:0]; //added to wire LED's
 // Connect everything to the data path (you have to figure out this part)
 datapath d0 (.*);
 

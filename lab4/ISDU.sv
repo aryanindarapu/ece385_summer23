@@ -278,9 +278,14 @@ module ISDU (   input logic         Clk,
 					LD_IR = 1'b1;
 				end
 			
-			PauseIR1: ;
-			PauseIR2: ;
-
+			PauseIR1: 
+				begin  //wires LEDS to pause states
+					LD_LED = 1'b1;
+				end
+			PauseIR2: 
+				begin 
+					LD_LED = 1'b1;
+				end
 			S_32 : 
 				LD_BEN = 1'b1;
 			//////////////////////////////////////////

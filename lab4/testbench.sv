@@ -14,7 +14,7 @@ slc3_testtop guy(.SW(SW), .Clk(Clk), .Run(Run), .Continue(Continue), .LED(LED), 
 
 //initialize the operation of the clock
 always begin : CLOCK_GENERATION
-#1 Clk = ~Clk;
+    #1 Clk = ~Clk;
 end
 
 initial begin: CLOCK_INITIALIZATION

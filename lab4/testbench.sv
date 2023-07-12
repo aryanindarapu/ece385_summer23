@@ -34,49 +34,56 @@ Continue = 1'b1;
 
 //NOTE THAT TEST 1, 2, selfmodifying, and XOR test all work and WE DONT NEED THE AUTO COUNTER TEST IT WAS OMMITTED THIS YEAR
 //SPECIFY WHICH OPERATION TYPE WE ARE DOING
-#10 SW = 10'b0000001011; //first IO operation(should withhold the switch value)
+#10 SW = 10'b0000110001; //first IO operation(should withhold the switch value)
 ///////////////////////////////////////////
 
+
+////////////////////////////////UNCOMMENT FOR TEST 2 and 3///////////////////////////////////////////////
+//#5 Run = 1'b0;
+//#5 Run = 1'b1;
+//
+//#100 SW = 10'b0000001010;
+//
+//#200 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#200 SW = 10'b0000000101;
+//
+//#5 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#200 SW = 10'b0000000001;
+//
+//#5 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#200 SW = 10'b0000011111;
+//
+//#5 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#200 SW = 10'b0011111111;
+//
+//#5 Continue = 1'b0;
+//#5 Continue = 1'b1;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////UNCOMMENT FOR MULT AND XOR TEST////////////////////////////////////////////////
 #5 Run = 1'b0;
 #5 Run = 1'b1;
 
-#100 SW = 10'b0000001010;
+#200 SW = 10'b00000001111;
 
 #200 Continue = 1'b0;
 #5 Continue = 1'b1;
 
-#200 SW = 10'b0000000101;
-
+#200 SW = 10'b00000001010;
+ //XOR = 00000000101
+ //MULT = 15 * 10 = x0F * x0A = 150 = x96
 #5 Continue = 1'b0;
 #5 Continue = 1'b1;
-
-#200 SW = 10'b0000000001;
-
-#5 Continue = 1'b0;
-#5 Continue = 1'b1;
-
-#200 SW = 10'b0000011111;
-
-#5 Continue = 1'b0;
-#5 Continue = 1'b1;
-
-#200 SW = 10'b0011111111;
-
-#5 Continue = 1'b0;
-#5 Continue = 1'b1;
-//
-//#50 Continue = 1'b0;
-//#5 Continue = 1'b1;
-//
-//#50 Continue = 1'b0;
-//#5 Continue = 1'b1;
-//
-//#50 Continue = 1'b0;
-//#5 Continue = 1'b1;
-//
-//#50 Continue = 1'b0;
-//#5 Continue = 1'b1;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 end
 
 endmodule

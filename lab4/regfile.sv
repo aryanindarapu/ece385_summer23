@@ -24,11 +24,10 @@ always_comb begin
         DR = 3'b111; // otherwise destination register is R7
 
     if (~SR1MUX) // 0
-        SR1 = IR[11:9];
+        SR1_OUT = regs[IR[11:9]];
     else // 1
-        SR1 = IR[8:6];
+        SR1_OUT = regs[IR[8:6]];
 		  
-    SR1_OUT = regs[SR1];
     SR2_OUT = regs[IR[2:0]];
 
 end

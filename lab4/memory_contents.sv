@@ -157,7 +157,7 @@ task memory_contents(output logic[15:0] mem_array[0:size-1]);
    mem_array[ 115 ] =    opINC(R1)                ;       // increment counter
    mem_array[ 116 ] =    opADDi(R3, R1, -16)      ;       // test for counter == 16
    mem_array[ 117 ] =    opBR(n, -8)              ;       // less than 16, repeat
-   mem_array[ 118 ] =    opRET()                   ;       // ENTRY FUNCTION RETURN
+   mem_array[ 118 ] =    opRET()                  ;       // ENTRY FUNCTION RETURN
    mem_array[ 119 ] =    opADDi(R1, R0, -16)      ;       // i = -16; SORT FUNCTION
    mem_array[ 120 ] =    opADDi(R2, R0, 1)        ;       // j = 1; OUTER LOOP DEST
    mem_array[ 121 ] =    opADD(R3, R6, R2)        ;       // generate pointer to data; INNER LOOP DEST
@@ -175,7 +175,7 @@ task memory_contents(output logic[15:0] mem_array[0:size-1]);
    mem_array[ 133 ] =    opBR(n, -13)             ;       // INNER LOOP BACK
    mem_array[ 134 ] =    opINC(R1)                ;       
    mem_array[ 135 ] =    opBR(n, -16)             ;       // OUTER LOOP BACK
-   mem_array[ 136 ] =    opRET()                   ;       // SORT FUNCTION RETURN
+   mem_array[ 136 ] =    opRET()                  ;       // SORT FUNCTION RETURN
    mem_array[ 137 ] =    opCLR(R1)                ;       // DISPLAY FUNCTION
    mem_array[ 138 ] =    opADD(R4, R7, R0)        ;       // JSR shuffle to get PC value in R5
    mem_array[ 139 ] =    opJSR(0)                 ;       

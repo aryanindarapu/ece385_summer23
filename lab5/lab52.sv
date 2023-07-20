@@ -55,9 +55,6 @@ module lab62 (
 
 );
 
-
-
-
 logic Reset_h, vssig, blank, sync, VGA_Clk;
 
 
@@ -158,7 +155,9 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 		
 	 );
 
-
+	vga_controller vga(.Clk(Clk), .Reset(Reset), .hs(VGA_HS), .vs(VGA_VS), .pixel_clk(VGA_Clk), .blank(blank), .sync(sync), .DrawX(drawxsig), .DrawY(drawysig));
+	ball b(.Reset(Reset), .frame_clk(VGA_Clk), .keycode(keycode), .BallX(ballxsig), .BallY(ballysig), .BallS(ballsizesig)); 
+	color_mapper cm();
 //instantiate a vga_controller, ball, and color_mapper here with the ports.
 
 

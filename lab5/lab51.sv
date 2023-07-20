@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------
-  --      lab61.sv                                                          --
+  --      lab51.sv                                                          --
   --      Christine Chen                                                   --
   --      10/23/2013                                                       --
   --      modified by Zuofu Cheng                                          --
@@ -8,7 +8,7 @@
   ---------------------------------------------------------------------------*/
 // Top-level module that integrates the Nios II system with the rest of the hardware
 
-module lab61(  	 	  input	        MAX10_CLK1_50, 
+module lab51(    input	        MAX10_CLK1_50, 
 					  input  [1:0]  KEY,
 					  output [7:0]  LEDR,
 					  output [12:0] DRAM_ADDR,
@@ -26,8 +26,8 @@ module lab61(  	 	  input	        MAX10_CLK1_50,
 				  );
 				  
 				  // You need to make sure that the port names here are identical to the port names at 
-				  // the interface in lab61_soc.v
-				  lab61_soc m_lab61_soc (.clk_clk(MAX10_CLK1_50),
+				  // the interface in lab51_soc.v
+				  lab51soc m_lab51_soc (.clk_clk(MAX10_CLK1_50),
 											 .reset_reset_n(KEY[0]), 
 											 .led_wire_export(LEDR),
 											//SDRAM

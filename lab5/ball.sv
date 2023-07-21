@@ -93,8 +93,19 @@ module  ball ( input Reset, frame_clk,
 					default: ;
 			   endcase
 				 
-				 Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);  // Update ball position
-				 Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
+				//  Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);  // Update ball position
+				//  Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
+
+			// Holding down a key should not cause the ball to clip out of the screen
+			if ((keycode != 0) && (((Ball_Y_Pos + Ball_Size) == Ball_Y_Max) || ((Ball_Y_Pos - Ball_Size) == Ball_Y_Min)))
+				Ball_Y_Pos <= Ball_Y_Pos;
+			else
+				Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);
+
+			if ((keycode != 0) && (((Ball_X_Pos + Ball_Size) == Ball_X_Max) || ((Ball_X_Pos - Ball_Size) == Ball_X_Min)))
+				Ball_X_Pos <= Ball_X_Pos;
+			else
+				Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
 			
 			
 	  /**************************************************************************************

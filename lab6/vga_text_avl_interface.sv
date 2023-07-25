@@ -47,7 +47,7 @@ module vga_text_avl_interface (
 	output logic hs, vs						// VGA HS/VS
 );
 
-logic [31:0] LOCAL_REG       [`NUM_REGS]; // Registers
+logic [31:0] LOCAL_REG       [`NUM_REGS]; // Registers -- literally the VRAM
 //put other local variables here
 
 
@@ -56,7 +56,33 @@ logic [31:0] LOCAL_REG       [`NUM_REGS]; // Registers
    
 // Read and write from AVL interface to register block, note that READ waitstate = 1, so this should be in always_ff
 always_ff @(posedge CLK) begin
+	if (RESET) begin // notice, this is a sycnrhonous reset, which is recommended on the FPGA
+        for (int i = 0; i < `NUM_REGS; i++)
+            regs[i] <= 32'b0;
+    end else if (AVL_CS) begin
+        if (AVL_READ) begin
+			AVL_READDATA <= LOCAL_REG[AVL_ADDR];
+		end else if (AVL_WRITE) begin
+			case (AVL_BYTE_EN)
+				4'b1111: // write all bytes
+					LOCAL_REG[AVL_ADDR] <= AVL_WRITEDATA;
+				4'b1100: // write upper two bytes
+					LOCAL_REG[AVL_ADDR][31:16] <= AVL_WRITEDATA[31:16];
+				4'b0011: // write lower two bytes
+					LOCAL_REG[AVL_ADDR][15:0] <= AVL_WRITEDATA[15:0];
+				4'b1000: // write upper byte
+					LOCAL_REG[AVL_ADDR][31:24] <= AVL_WRITEDATA[31:24];
+				4'b0100: // write middle upper byte
+					LOCAL_REG[AVL_ADDR][23:16] <= AVL_WRITEDATA[23:16];
+				4'b0010: // write middle lower byte
+					LOCAL_REG[AVL_ADDR][15:8] <= AVL_WRITEDATA[15:8];
+				4'b0001: // write lower byte
+					LOCAL_REG[AVL_ADDR][7:0] <= AVL_WRITEDATA[7:0];
+				default: ; // write no bytes - DO NOTHING
 
+			endcase
+		end
+    end
 end
 
 

@@ -34,15 +34,15 @@ Continue = 1'b1;
 
 //NOTE THAT TEST 1, 2, selfmodifying, and XOR test all work and WE DONT NEED THE AUTO COUNTER TEST IT WAS OMMITTED THIS YEAR
 //SPECIFY WHICH OPERATION TYPE WE ARE DOING
-#10 SW = 10'b0000010100;
+#10 SW = 10'b0000101010;
 ///////////////////////////////////////////
 
 
-////////////////////////////////UNCOMMENT FOR TEST 2 and 3///////////////////////////////////////////////
+////////////////////////////////UNCOMMENT FOR TEST 1, 2 and 3///////////////////////////////////////////////
 //#5 Run = 1'b0;
 //#5 Run = 1'b1;
 //
-//#100 SW = 10'b0000001010;
+//#200 SW = 10'b0000001010;
 //
 //#200 Continue = 1'b0;
 //#5 Continue = 1'b1;
@@ -63,27 +63,146 @@ Continue = 1'b1;
 //#5 Continue = 1'b1;
 //
 //#200 SW = 10'b0011111111;
-//
+////
 //#5 Continue = 1'b0;
 //#5 Continue = 1'b1;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////UNCOMMENT FOR MULT AND XOR TEST////////////////////////////////////////////////
+//#5 Run = 1'b0;
+//#5 Run = 1'b1;
+//
+//#200 SW = 10'b00000001111;
+//
+//#200 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#200 SW = 10'b00000001010;
+// //XOR = 00000000101
+// //MULT = 15 * 10 = x0F * x0A = 150 = x96
+//#5 Continue = 1'b0;
+//#5 Continue = 1'b1;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////UNCOMMENT FOR THE SORT TEST///////////////////////////////////////////////////
+//#5 Run = 1'b0;
+//#5 Run = 1'b1;
+//
+//#200 SW = 10'b00000000011; //set to three to display
+//
+//#400 Continue = 1'b0; //check all the preset values for the sorting function
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//
+//#200 SW = 10'b00000000010; //set to two to sort
+//#200 Continue = 1'b0; //run the sort
+//#5 Continue = 1'b1;
+//
+//#30000 SW = 10'b00000000011; //set to three to display
+//
+//#400 Continue = 1'b0; //check all the sorted values for the sorting function
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//#400 Continue = 1'b0;
+//#5 Continue = 1'b1;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////ACT ONCE COUNTING TEST/////////////////////////////////////////////////////////
 #5 Run = 1'b0;
 #5 Run = 1'b1;
 
-#200 SW = 10'b00000001111;
-
+#200 Continue = 1'b0; //a bunch of counting up
+#5 Continue = 1'b1;
 #200 Continue = 1'b0;
 #5 Continue = 1'b1;
-
-#200 SW = 10'b00000001010;
- //XOR = 00000000101
- //MULT = 15 * 10 = x0F * x0A = 150 = x96
-#5 Continue = 1'b0;
+#200 Continue = 1'b0;
 #5 Continue = 1'b1;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+#200 Continue = 1'b0;
+#5 Continue = 1'b1;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 end
 
 endmodule

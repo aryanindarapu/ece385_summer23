@@ -15,8 +15,7 @@
 
 module  ball ( input Reset, frame_clk,
 					input [7:0] keycode,
-               output [9:0]  BallX, BallY, BallS,
-					output [3:0] dir);
+               output [9:0]  BallX, BallY, BallS, dir );
     
     logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion, Ball_Size;
 	 
@@ -59,17 +58,19 @@ module  ball ( input Reset, frame_clk,
 					  Ball_Y_Motion <= Ball_Y_Motion;  // Ball is somewhere in the middle, don't bounce, just keep moving
 					  Ball_X_Motion <= Ball_X_Motion;
 				 end
-				
-				 if(Ball_Y_Motion == 1 || Ball_Y_Motion == -1) //gaurantees that there cant be diagonal motion
-						Ball_X_Motion <= 0;
-				 else if(Ball_X_Motion == 1 || Ball_X_Motion == -1)
-						Ball_Y_Motion <= 0;
-						
+				 
+				 if (Ball_Y_Motion == 1 || Ball_Y_Motion == -1)
+					Ball_X_Motion <= 0;
+				 else if (Ball_X_Motion == 1 || Ball_X_Motion == -1)
+					Ball_Y_Motion <= 0;
+				 
+				 
+				 
 				 case (keycode)
 					8'h04 : begin
 
 								Ball_X_Motion <= -1;//A
-								Ball_Y_Motion<= 0;
+								Ball_Y_Motion <= 0;
 							  end
 					        
 					8'h07 : begin
@@ -92,24 +93,19 @@ module  ball ( input Reset, frame_clk,
 					default: ;
 			   endcase
 				 
-//				 if(((Ball_Y_Pos+Ball_Y_Motion+Ball_Size) <= Ball_Y_Max) && ((Ball_Y_Pos+Ball_Y_Motion-Ball_Size) >= Ball_Y_Min)) 
-//						Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);  // Update ball position
-//				 else
-//						Ball_Y_Pos <= Ball_Y_Pos;
-//						
-//				 if(((Ball_X_Pos+Ball_X_Motion+Ball_Size) <= Ball_X_Max) && ((Ball_X_Pos+Ball_X_Motion-Ball_Size) >= Ball_X_Min))
-//						Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
-//				 else
-//						Ball_X_Pos <= Ball_X_Pos;
+				//  Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);  // Update ball position
+				//  Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
 
-				if( (keycode != 0) && ( ((Ball_Y_Pos+Ball_Size) == Ball_Y_Max) || ((Ball_Y_Pos-Ball_Size) == Ball_Y_Min) ) )
-					Ball_Y_Pos <= Ball_Y_Pos;
-				else
-					Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);
-				if( (keycode != 0) && ( ((Ball_X_Pos+Ball_Size) == Ball_X_Max) || ((Ball_X_Pos-Ball_Size) == Ball_X_Min) ) )
-					Ball_X_Pos <= Ball_X_Pos;
-				else
-					Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
+			// Holding down a key should not cause the ball to clip out of the screen
+			if ((keycode != 0) && (((Ball_Y_Pos + Ball_Size) == Ball_Y_Max) || ((Ball_Y_Pos - Ball_Size) == Ball_Y_Min)))
+				Ball_Y_Pos <= Ball_Y_Pos;
+			else
+				Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);
+
+			if ((keycode != 0) && (((Ball_X_Pos + Ball_Size) == Ball_X_Max) || ((Ball_X_Pos - Ball_Size) == Ball_X_Min)))
+				Ball_X_Pos <= Ball_X_Pos;
+			else
+				Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
 			
 			
 	  /**************************************************************************************
@@ -122,28 +118,28 @@ module  ball ( input Reset, frame_clk,
       **************************************************************************************/
       
 			
-		end  
+		end
     end
 	 
 	 always_comb
-	 begin
-		if(Ball_X_Motion == 1)
-			dir = 4'b0001; //going right
-		else if (Ball_X_Motion == 10'b1111111111)
-			dir = 4'b0010; //left
-		else if (Ball_Y_Motion == 10'b0000000001)
-			dir = 4'b0100; //down
-		else if (Ball_Y_Motion == 10'b1111111111)
-			dir = 4'b1000; //up
-		else
-			dir = 4'b0000; //not moving
+     begin
+        if(Ball_X_Motion == 1)
+            dir = 4'b0001; //going right
+        else if (Ball_X_Motion == 10'b1111111111)
+            dir = 4'b0010; //left
+        else if (Ball_Y_Motion == 10'b0000000001)
+            dir = 4'b0100; //down
+        else if (Ball_Y_Motion == 10'b1111111111)
+            dir = 4'b1000; //up
+        else
+            dir = 4'b0000; //not moving
     end
-	 
+       
     assign BallX = Ball_X_Pos;
    
     assign BallY = Ball_Y_Pos;
    
     assign BallS = Ball_Size;
     
-
+	 
 endmodule

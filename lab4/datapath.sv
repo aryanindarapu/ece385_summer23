@@ -25,7 +25,7 @@ marmux marm (.IR(IR), .PC(PC), .SR1_OUT(SR1_OUT), .ADDR2MUX(ADDR2MUX), .ADDR1MUX
 pcmux pcm (.PCMUX(PCMUX), .PC(PC), .BUS(BUS), .ADDER_OUT(new_MAR), .new_PC(new_PC));
 regfile regunit (.Clk(Clk), .Reset(Reset), .DRMUX(DRMUX), .SR1MUX(SR1MUX), .LD_REG(LD_REG), .IR(IR), .BUS(BUS), .SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT));
 conditioncode cc (.IR(IR), .BUS(BUS), .LD_CC(LD_CC), .Reset(Reset), .Clk(Clk), .BEN(BEN), .LD_BEN(LD_BEN));
-alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .new_ALU(new_ALU), .SR2MUX(SR2MUX));
+alu al (.SR1_OUT(SR1_OUT), .SR2_OUT(SR2_OUT), .IR(IR[4:0]), .ALUK(ALUK), .SR2MUX(SR2MUX), .new_ALU(new_ALU));
 
 always_comb begin
 	if (gates == 4'b1000) // GatePC

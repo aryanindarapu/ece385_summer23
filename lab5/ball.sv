@@ -15,13 +15,13 @@
 
 module  ball ( input Reset, frame_clk,
 					input [7:0] keycode,
-               output [9:0]  BallX, BallY, BallS );
+               output [9:0]  BallX, BallY, BallS, dir );
     
     logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion, Ball_Size;
 	 
     parameter [9:0] Ball_X_Center=320;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=240;  // Center position on the Y axis
-    parameter [9:0] Ball_X_Min=0;       // Leftmost point on the X axis
+    parameter [9:0] Ball_X_Min=10;       // Leftmost point on the X axis
     parameter [9:0] Ball_X_Max=639;     // Rightmost point on the X axis
     parameter [9:0] Ball_Y_Min=0;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=479;     // Bottommost point on the Y axis
@@ -42,16 +42,16 @@ module  ball ( input Reset, frame_clk,
            
         else 
         begin 
-				 if ( (Ball_Y_Pos + Ball_Size) > Ball_Y_Max )  // Ball is at the bottom edge, BOUNCE!
+				 if ( (Ball_Y_Pos + Ball_Size) >= Ball_Y_Max )  // Ball is at the bottom edge, BOUNCE!
 					  Ball_Y_Motion <= (~ (Ball_Y_Step) + 1'b1);  // 2's complement.
 					  
-				 else if ( (Ball_Y_Pos - Ball_Size) < Ball_Y_Min )  // Ball is at the top edge, BOUNCE!
+				 else if ( (Ball_Y_Pos - Ball_Size) <= Ball_Y_Min )  // Ball is at the top edge, BOUNCE!
 					  Ball_Y_Motion <= Ball_Y_Step;
 					  
-				  else if ( (Ball_X_Pos + Ball_Size) > Ball_X_Max )  // Ball is at the Right edge, BOUNCE!
+				  else if ( (Ball_X_Pos + Ball_Size) >= Ball_X_Max )  // Ball is at the Right edge, BOUNCE!
 					  Ball_X_Motion <= (~ (Ball_X_Step) + 1'b1);  // 2's complement.
 					  
-				 else if ( (Ball_X_Pos - Ball_Size) < Ball_X_Min )  // Ball is at the Left edge, BOUNCE!
+				 else if ( (Ball_X_Pos - Ball_Size) <= Ball_X_Min )  // Ball is at the Left edge, BOUNCE!
 					  Ball_X_Motion <= Ball_X_Step;
 					  
 				 else begin
@@ -59,11 +59,11 @@ module  ball ( input Reset, frame_clk,
 					  Ball_X_Motion <= Ball_X_Motion;
 				 end
 				 
-				 if (Ball_Y_Motion != 0) begin
+				 if (Ball_Y_Motion == 1 || Ball_Y_Motion == -1)
 					Ball_X_Motion <= 0;
-				 end else if (Ball_X_Motion != 0) begin
+				 else if (Ball_X_Motion == 1 || Ball_X_Motion == -1)
 					Ball_Y_Motion <= 0;
-				 end
+				 
 				 
 				 
 				 case (keycode)
@@ -119,6 +119,20 @@ module  ball ( input Reset, frame_clk,
       
 			
 		end
+    end
+	 
+	 always_comb
+     begin
+        if(Ball_X_Motion == 1)
+            dir = 4'b0001; //going right
+        else if (Ball_X_Motion == 10'b1111111111)
+            dir = 4'b0010; //left
+        else if (Ball_Y_Motion == 10'b0000000001)
+            dir = 4'b0100; //down
+        else if (Ball_Y_Motion == 10'b1111111111)
+            dir = 4'b1000; //up
+        else
+            dir = 4'b0000; //not moving
     end
        
     assign BallX = Ball_X_Pos;

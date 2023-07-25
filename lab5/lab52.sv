@@ -56,6 +56,13 @@ module lab52 (
 );
 
 logic Reset_h, vssig, blank, sync, VGA_Clk;
+logic [9:0] throwout;
+logic [3:0] dir;
+//one-hot encoding for the leds to switch when moving different directions
+assign LEDR[0] = dir[0];
+assign LEDR[1] = dir[1];
+assign LEDR[2] = dir[2];
+assign LEDR[3] = dir[3];
 
 
 //=======================================================
@@ -150,13 +157,13 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 		
 		//LEDs and HEX
 		.hex_digits_export({hex_num_4, hex_num_3, hex_num_1, hex_num_0}),
-		.leds_export({hundreds, signs, LEDR}),
+		.leds_export({hundreds, signs, throwout}),
 		.keycode_export(keycode)
 		
 	 );
 
 	vga_controller vga(.Clk(MAX10_CLK1_50), .Reset(Reset_h), .hs(VGA_HS), .vs(VGA_VS), .pixel_clk(VGA_Clk), .blank(blank), .sync(sync), .DrawX(drawxsig), .DrawY(drawysig));
-	ball b(.Reset(Reset_h), .frame_clk(VGA_Clk), .keycode(keycode), .BallX(ballxsig), .BallY(ballysig), .BallS(ballsizesig)); 
+	ball b(.Reset(Reset_h), .frame_clk(VGA_VS), .keycode(keycode), .BallX(ballxsig), .BallY(ballysig), .BallS(ballsizesig), .dir(dir)); 
 	color_mapper cm(.BallX(ballxsig), .BallY(ballysig), .DrawX(drawxsig), .DrawY(drawysig), .Ball_size(ballsizesig), .Red(Red), .Blue(Blue), .Green(Green));
 
 

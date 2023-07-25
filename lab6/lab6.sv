@@ -117,7 +117,7 @@ module lab6 (
 	//assign hex_num_0 = 4'h0;
 	
 	//remember to rename the SOC as necessary
-	lab6_soc u0 (
+	lab6soc u0 (
 		.clk_clk                           (Clk),              //clk.clk
 		.reset_reset_n                     (1'b1),             //reset.reset_n
 		.altpll_0_locked_conduit_export    (),    			   //altpll_0_locked_conduit.export

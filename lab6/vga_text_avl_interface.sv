@@ -67,16 +67,16 @@ logic inv_en; //inverse enable for the particular glyph
 logic bof; //is this pixel background or foreground (B OR F)
 
 logic [3:0] fgd_r, fgd_g, fgd_b, bkg_r, bkg_g, bkg_b;
-assign fgd_r = LOCAL_REG[CTRL_REG][24:21];
-assign fgd_g = LOCAL_REG[CTRL_REG][20:17];
-assign fgd_b = LOCAL_REG[CTRL_REG][16:13];
-assign bkg_r = LOCAL_REG[CTRL_REG][12:9];
-assign bkg_g = LOCAL_REG[CTRL_REG][8:5];
-assign bkg_b = LOCAL_REG[CTRL_REG][4:1];
+assign fgd_r = LOCAL_REG[`CTRL_REG][24:21];
+assign fgd_g = LOCAL_REG[`CTRL_REG][20:17];
+assign fgd_b = LOCAL_REG[`CTRL_REG][16:13];
+assign bkg_r = LOCAL_REG[`CTRL_REG][12:9];
+assign bkg_g = LOCAL_REG[`CTRL_REG][8:5];
+assign bkg_b = LOCAL_REG[`CTRL_REG][4:1];
 
-assign mod_four = 11b'00000000011; //for % 4
-assign mod_eight = 11b'00000000111; //for % 8
-assign mod_sixteen = 11b'00000001111; //for % 16
+assign mod_four = 11'b00000000011; //for % 4
+assign mod_eight = 11'b00000000111; //for % 8
+assign mod_sixteen = 11'b00000001111; //for % 16
 
 logic [10:0] addr_code;
 logic [7:0] temp_output;
@@ -84,16 +84,16 @@ logic [7:0] current_character [16];
    
 // Read and write from AVL interface to register block, note that READ waitstate = 1, so this should be in always_ff
 always_ff @(posedge CLK) begin
-/*=====================================================================================================*/
-/*---------------READING AND WRITING PORTION OF THE ALWAYS_FF------------------------------------------*/
-/*=====================================================================================================*/
+	/*=====================================================================================================*/
+	/*---------------READING AND WRITING PORTION OF THE ALWAYS_FF------------------------------------------*/
+	/*=====================================================================================================*/
 	if (RESET) begin // notice, this is a sycnrhonous reset, which is recommended on the FPGA
         for (int i = 0; i < `NUM_REGS; i++)
             LOCAL_REG[i] <= 32'b0;
     end else if (AVL_CS) begin
-        if (AVL_READ)
+        if (AVL_READ) 
 			AVL_READDATA <= LOCAL_REG[AVL_ADDR];
-		end else if (AVL_WRITE) begin
+		else if (AVL_WRITE) begin
 			case (AVL_BYTE_EN)
 				4'b1111: // write all bytes
 					LOCAL_REG[AVL_ADDR] <= AVL_WRITEDATA;
@@ -113,73 +113,83 @@ always_ff @(posedge CLK) begin
 
 			endcase
 		end
-/*=====================================================================================================*/
-/*-----------------------PIXEL DRAWING AND MATH LOGIC SECTION(IN RASTOR ORDER CONTROL)----------------*/
-/*=====================================================================================================*/
-	//drawx and drawy tell us which pixel positon we are trying to draw, and with math what glyph we are drawing
-	row <= drawysig[9:4] //divide by 16(height of a glyph)
-	col <= drawxsig[9:3] //divide by 8(width of a glyph)
-	glyph_row <= drawysig & mod_sixteen;
-	glyph_col <= drawxsig & mod_eight;
-	//80x30 = 2400 glyphs | row*80 + col will give our glyph/char address
+	end
+
+	// 80x30 = 2400 glyphs | row*80 + col will give our glyph/char address
 	char_index <= (row*80) + col;
-	//(char_addr / 4) = word_addr/register
+	// (char_addr / 4) = word_addr/register
 	word_addr <= char_index[10:2];
-	//byte in the word -> char_addr % 4 
-	cur_byte <= char_index & mod_four;
-	//now we know the word address and byte we are drawing in, so we can access what character we are drawing
-	case (cur_byte)
-		11b'00000000000: //0th byte of the word
-			glyph_addr[10:4] <= LOCAL_REG[word_addr][6:0];
-			glyph_addr[3:0] <= glyph_row[3:0];
-			inv_en <= LOCAL_REG[word_addr][7];
-		11b'00000000001: //1st byte of the word
-			glyph_addr[10:4] <= LOCAL_REG[word_addr][14:8];
-			glyph_addr[3:0] <= glyph_row[3:0];
-			inv_en <= LOCAL_REG[word_addr][15];
-		11b'00000000010: //2nd byte of the word
-			glyph_addr[10:4] <= LOCAL_REG[word_addr][22:16];
-			glyph_addr[3:0] <= glyph_row[3:0];
-			inv_en <= LOCAL_REG[word_addr][23];
-		11b'00000000011: //3rd byte of the word
-			glyph_addr[10:4] <= LOCAL_REG[word_addr][30:24];
-			glyph_addr[3:0] <= glyph_row[3:0];
-			inv_en <= LOCAL_REG[word_addr][31];
-	endcase
-	//now pixel_data is the correct 8 bit data
+	// now pixel_data is the correct 8 bit data
 	bof <= pixel_data[glyph_col];
-/*=====================================================================================================*/
-/*----------------------------------------ELECTRON GUN SETTING-----------------------------------------*/
-/*=====================================================================================================*/
-	if (inv_en == 1b'0) begin//no inverse
-		if(bof == 1b'1) begin //foreground
-			red <= fgd_r;
-			green <= fgd_g;
-			blue <= fgd_b;
+	// byte in the word -> char_addr % 4 
+	curr_byte <= char_index & mod_four;
+end
+
+always_comb begin
+	/*=====================================================================================================*/
+	/*-----------------------PIXEL DRAWING AND MATH LOGIC SECTION(IN RASTOR ORDER CONTROL)-----------------*/
+	/*=====================================================================================================*/
+	// drawx and drawy tell us which pixel positon we are trying to draw, and with math what glyph we are drawing
+	row = drawysig[9:4] //divide by 16 (height of a glyph)
+	col = drawxsig[9:3] //divide by 8 (width of a glyph)
+	glyph_row = drawysig & mod_sixteen;
+	glyph_col = drawxsig & mod_eight;
+
+	// now we know the word address and byte we are drawing in, so we can access what character we are drawing
+	case (curr_byte) 
+		11'b00000000001: begin // 1st byte of the word
+			glyph_addr[10:4] = LOCAL_REG[word_addr][22:16];
+			glyph_addr[3:0] = glyph_row[3:0];
+			inv_en = LOCAL_REG[word_addr][23];
 		end
-		else begin //background
-			red <= bkg_r;
-			green <= bkg_g;
-			blue <= bkg_b;
+		11'b00000000011: begin // 3rd byte of the word
+			glyph_addr[10:4] = LOCAL_REG[word_addr][14:8];
+			glyph_addr[3:0] = glyph_row[3:0];
+			inv_en = LOCAL_REG[word_addr][15];
+		end
+		11'b00000000010: begin // 2nd byte of the word
+			glyph_addr[10:4] = LOCAL_REG[word_addr][30:24];
+			glyph_addr[3:0] = glyph_row[3:0];
+			inv_en = LOCAL_REG[word_addr][31];
+		end
+		default: begin // 0th byte of the word
+			glyph_addr[10:4] = LOCAL_REG[word_addr][6:0];
+			glyph_addr[3:0] = glyph_row[3:0];
+			inv_en = LOCAL_REG[word_addr][7];
+		end
+	endcase
+
+	/*=====================================================================================================*/
+	/*----------------------------------------ELECTRON GUN SETTING-----------------------------------------*/
+	/*=====================================================================================================*/
+	if (inv_en == 1'b0) begin // no inverse
+		if(bof == 1'b1) begin //foreground
+			red = fgd_r;
+			green = fgd_g;
+			blue = fgd_b;
+		end
+		else begin // background
+			red = bkg_r;
+			green = bkg_g;
+			blue = bkg_b;
 		end
 	end
 	else begin
-		if(bof == 1b'1) begin //background
-			red <= bkg_r;
-			green <= bkg_g;
-			blue <= bkg_b;
+		if (bof == 1b'1) begin // background
+			red = bkg_r;
+			green = bkg_g;
+			blue = bkg_b;
 		end
-		else begin //foreground
-			red <= fgd_r;
-			green <= fgd_g;
-			blue <= fgd_b;
+		else begin // foreground
+			red = fgd_r;
+			green = fgd_g;
+			blue = fgd_b;
 		end
 	end
 end
 
 //handle drawing (may either be combinational or sequential - or both).
-font_rom f0(.addr(glyph_addr), .data(pixel_data));
-
+font_rom f0(.addr(glyph_addr), .data(pixel_data)); 
 vga_controller v0(.Clk(CLK), .Reset(RESET), .hs(hs), .vs(vs), .pixel_clk(pixel_clk), .blank(blank), .sync(sync), .DrawX(drawxsig), .DrawY(drawysig));
 
 endmodule

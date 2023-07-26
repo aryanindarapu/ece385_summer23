@@ -50,8 +50,15 @@ module vga_text_avl_interface (
 logic [31:0] LOCAL_REG       [`NUM_REGS]; // Registers -- literally the VRAM
 //put other local variables here
 
+logic pixel_clk, blank, sync; // VGA signals
+logic [9:0] drawxsig, drawysig; // VGA signals
 
-//Declare submodules..e.g. VGA controller, ROMS, etc
+logic [10:0] addr_code;
+logic [7:0] temp_output;
+logic [7:0] current_character [16];
+
+vga_controller vga(.Clk(CLK), .Reset(RESET), .hs(hs), .vs(vs), .pixel_clk(pixel_clk), .blank(blank), .sync(sync), .DrawX(drawxsig), .DrawY(drawysig));
+font_rom fr0(.addr(addr_code), .data(temp_output));
 	
    
 // Read and write from AVL interface to register block, note that READ waitstate = 1, so this should be in always_ff
@@ -84,7 +91,6 @@ always_ff @(posedge CLK) begin
 		end
     end
 end
-
 
 //handle drawing (may either be combinational or sequential - or both).
 		

@@ -78,9 +78,9 @@ assign mod_four = 11'b00000000011; //for % 4
 assign mod_eight = 11'b00000000111; //for % 8
 assign mod_sixteen = 11'b00000001111; //for % 16
 
+
 logic [10:0] addr_code;
 logic [7:0] temp_output;
-logic [7:0] current_character [16];
    
 // Read and write from AVL interface to register block, note that READ waitstate = 1, so this should be in always_ff
 always_ff @(posedge CLK) begin

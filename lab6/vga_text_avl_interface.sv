@@ -51,14 +51,14 @@ logic [31:0] LOCAL_REG       [`NUM_REGS]; // Registers -- literally the VRAM
 //put other local variables here
 
 
-//Declare submodules..e.g. VGA controller, ROMS, etc
+ 
 	
    
 // Read and write from AVL interface to register block, note that READ waitstate = 1, so this should be in always_ff
 always_ff @(posedge CLK) begin
 	if (RESET) begin // notice, this is a sycnrhonous reset, which is recommended on the FPGA
         for (int i = 0; i < `NUM_REGS; i++)
-            regs[i] <= 32'b0;
+            LOCAL_REG[i] <= 32'b0;
     end else if (AVL_CS) begin
         if (AVL_READ) begin
 			AVL_READDATA <= LOCAL_REG[AVL_ADDR];

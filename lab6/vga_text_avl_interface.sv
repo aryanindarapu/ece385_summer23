@@ -81,10 +81,6 @@ assign mod_sixteen = 11b'00000001111; //for % 16
 logic [10:0] addr_code;
 logic [7:0] temp_output;
 logic [7:0] current_character [16];
-
-vga_controller vga(.Clk(CLK), .Reset(RESET), .hs(hs), .vs(vs), .pixel_clk(pixel_clk), .blank(blank), .sync(sync), .DrawX(drawxsig), .DrawY(drawysig));
-font_rom fr0(.addr(addr_code), .data(temp_output));
-	
    
 // Read and write from AVL interface to register block, note that READ waitstate = 1, so this should be in always_ff
 always_ff @(posedge CLK) begin

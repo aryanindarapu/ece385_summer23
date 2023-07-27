@@ -65,6 +65,7 @@ logic [10:0] mod_eight;
 logic [10:0] mod_sixteen;
 logic inv_en; //inverse enable for the particular glyph
 logic bof; //is this pixel background or foreground (B OR F)
+logic [10:0] curr_byte;
 
 logic [3:0] fgd_r, fgd_g, fgd_b, bkg_r, bkg_g, bkg_b;
 assign fgd_r = LOCAL_REG[`CTRL_REG][24:21];
@@ -114,15 +115,6 @@ always_ff @(posedge CLK) begin
 			endcase
 		end
 	end
-
-	// 80x30 = 2400 glyphs | row*80 + col will give our glyph/char address
-	char_index <= (row*80) + col;
-	// (char_addr / 4) = word_addr/register
-	word_addr <= char_index[10:2];
-	// now pixel_data is the correct 8 bit data
-	bof <= pixel_data[glyph_col];
-	// byte in the word -> char_addr % 4 
-	curr_byte <= char_index & mod_four;
 end
 
 always_comb begin
@@ -130,10 +122,17 @@ always_comb begin
 	/*-----------------------PIXEL DRAWING AND MATH LOGIC SECTION(IN RASTOR ORDER CONTROL)-----------------*/
 	/*=====================================================================================================*/
 	// drawx and drawy tell us which pixel positon we are trying to draw, and with math what glyph we are drawing
-	row = drawysig[9:4] //divide by 16 (height of a glyph)
-	col = drawxsig[9:3] //divide by 8 (width of a glyph)
+	row = drawysig[9:4]; //divide by 16 (height of a glyph)
+	col = drawxsig[9:3]; //divide by 8 (width of a glyph)
 	glyph_row = drawysig & mod_sixteen;
-	glyph_col = drawxsig & mod_eight;
+	glyph_col = 11'b00000000111 - (drawxsig & mod_eight);
+	
+	// 80x30 = 2400 glyphs | row*80 + col will give our glyph/char address
+	char_index <= (row*80) + col;
+	// (char_addr / 4) = word_addr/register
+	word_addr <= char_index[10:2];
+	// byte in the word -> char_addr % 4 
+	curr_byte <= char_index & mod_four;
 
 	// now we know the word address and byte we are drawing in, so we can access what character we are drawing
 	case (curr_byte) 
@@ -158,32 +157,43 @@ always_comb begin
 			inv_en = LOCAL_REG[word_addr][7];
 		end
 	endcase
+	
+	// now pixel_data is the correct 8 bit data
+	bof <= pixel_data[glyph_col];
+end
 
-	/*=====================================================================================================*/
-	/*----------------------------------------ELECTRON GUN SETTING-----------------------------------------*/
-	/*=====================================================================================================*/
-	if (inv_en == 1'b0) begin // no inverse
-		if(bof == 1'b1) begin //foreground
-			red = fgd_r;
-			green = fgd_g;
-			blue = fgd_b;
+always_ff @(posedge pixel_clk) begin
+	if (~blank) begin
+		red <= 4'b0000;
+		green <= 4'b0000;
+		blue <= 4'b0000;
+	end else begin
+		/*=====================================================================================================*/
+		/*----------------------------------------ELECTRON GUN SETTING-----------------------------------------*/
+		/*=====================================================================================================*/
+		if (inv_en == 1'b0) begin // no inverse
+			if(bof == 1'b1) begin //foreground
+				red = fgd_r;
+				green = fgd_g;
+				blue = fgd_b;
+			end
+			else begin // background
+				red = bkg_r;
+				green = bkg_g;
+				blue = bkg_b;
+			end
 		end
-		else begin // background
-			red = bkg_r;
-			green = bkg_g;
-			blue = bkg_b;
-		end
-	end
-	else begin
-		if (bof == 1b'1) begin // background
-			red = bkg_r;
-			green = bkg_g;
-			blue = bkg_b;
-		end
-		else begin // foreground
-			red = fgd_r;
-			green = fgd_g;
-			blue = fgd_b;
+		else begin
+			if (bof == 1'b1) begin // background
+				red = bkg_r;
+				green = bkg_g;
+				blue = bkg_b;
+			end
+			else begin // foreground
+				red = fgd_r;
+				green = fgd_g;
+				blue = fgd_b;
+			end
 		end
 	end
 end

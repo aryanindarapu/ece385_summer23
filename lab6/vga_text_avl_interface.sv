@@ -137,16 +137,16 @@ always_comb begin
 	// now we know the word address and byte we are drawing in, so we can access what character we are drawing
 	case (curr_byte) 
 		11'b00000000001: begin // 1st byte of the word
+			glyph_addr[10:4] = LOCAL_REG[word_addr][14:8]; // basically just the code * 16 (i.e. which glyph)
+			glyph_addr[3:0] = glyph_row[3:0]; // how far down in each glyph we are (add up to 15)
+			inv_en = LOCAL_REG[word_addr][15];
+		end
+		11'b00000000010: begin // 2nd byte of the word
 			glyph_addr[10:4] = LOCAL_REG[word_addr][22:16];
 			glyph_addr[3:0] = glyph_row[3:0];
 			inv_en = LOCAL_REG[word_addr][23];
 		end
 		11'b00000000011: begin // 3rd byte of the word
-			glyph_addr[10:4] = LOCAL_REG[word_addr][14:8];
-			glyph_addr[3:0] = glyph_row[3:0];
-			inv_en = LOCAL_REG[word_addr][15];
-		end
-		11'b00000000010: begin // 2nd byte of the word
 			glyph_addr[10:4] = LOCAL_REG[word_addr][30:24];
 			glyph_addr[3:0] = glyph_row[3:0];
 			inv_en = LOCAL_REG[word_addr][31];

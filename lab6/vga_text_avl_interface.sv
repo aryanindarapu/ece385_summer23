@@ -52,8 +52,8 @@ logic [31:0] LOCAL_REG       [`NUM_REGS]; // Registers -- literally the VRAM
 logic pixel_clk, blank, sync;
 logic [9:0] drawxsig, drawysig;
 logic [7:0] pixel_data;
-logic [10:0] char_index; //character address determined from drawx,y positions
-logic [10:0] word_addr; //word address determined from character address
+logic [11:0] char_index; //character address determined from drawx,y positions
+logic [9:0] word_addr; //word address determined from character address
 logic [10:0] row; //current glyph map row bitwise
 logic [10:0] col; //current glyph map col bitwise
 logic [10:0] glyph_row; //pixel row for the current glyph
@@ -128,11 +128,11 @@ always_comb begin
 	glyph_col = 11'b00000000111 - (drawxsig & mod_eight);
 	
 	// 80x30 = 2400 glyphs | row*80 + col will give our glyph/char address
-	char_index <= (row*80) + col;
+	char_index = (row*80) + col;
 	// (char_addr / 4) = word_addr/register
-	word_addr <= char_index[10:2];
+	word_addr = char_index[11:2];
 	// byte in the word -> char_addr % 4 
-	curr_byte <= char_index & mod_four;
+	curr_byte = char_index & mod_four;
 
 	// now we know the word address and byte we are drawing in, so we can access what character we are drawing
 	case (curr_byte) 
@@ -159,7 +159,7 @@ always_comb begin
 	endcase
 	
 	// now pixel_data is the correct 8 bit data
-	bof <= pixel_data[glyph_col];
+	bof = pixel_data[glyph_col];
 end
 
 always_ff @(posedge pixel_clk) begin
